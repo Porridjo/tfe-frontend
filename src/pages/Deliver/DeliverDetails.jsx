@@ -1,20 +1,19 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import '../../stylesheets/DeliverPage.css'
+import nurseryService from "../../services/nurseries"
 
 const DeliverDetails = () => {
 
     const [nursery, setNursery] = useState([])
-    const { roundname, nurseryname} = useParams()
+    const { roundname, nurseryname } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:5000/creches/${nurseryname}`)
-            .then(response => {
-                console.log('promise for nursery fulfilled')
-                setNursery(response.data)
+        nurseryService
+            .getOneNursery(nurseryname)
+            .then(foundNursery => {
+                setNursery(foundNursery)
             })
     }, [])
 
