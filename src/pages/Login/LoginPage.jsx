@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import { useNavigate } from "react-router-dom";
 import '../../stylesheets/position.css'
 
-const LoginPage = () => {
+const LoginPage = ({setUser}) => {
   const [messageLogin, setMessageLogin] = useState('');
   const [isLogged, setIsLogged] = useState(undefined);
 
@@ -25,6 +25,7 @@ const LoginPage = () => {
         // Authentification réussie
         setMessageLogin('Authentification réussie!');
         setIsLogged(true);
+        setUser(credentials.username);
         navigate('/home');
       } else {
         // Gérer les erreurs d'authentification
@@ -35,6 +36,7 @@ const LoginPage = () => {
       // Gérer les erreurs liées à l'appel API
       console.error('API call failed:', error);
       setMessageLogin('Une erreur est survenue..');
+      setIsLogged(false);
     }
   };
 
