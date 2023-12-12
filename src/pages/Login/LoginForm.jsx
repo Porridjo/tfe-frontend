@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../stylesheets/LoginPage.css";
+import "../../stylesheets/LoginPage.css";
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
