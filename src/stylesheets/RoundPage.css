@@ -1,0 +1,28 @@
+.between {
+    justify-content: space-between;
+}
+
+.margin-button {
+    margin-inline: 30px;
+}
+
+.scroller-item {
+    display: flex;
+    justify-content: space-around;
+    padding: 1%;
+    margin-bottom: 5%;
+    border: 2px groove gray;
+    border-radius: 5px;
+}
+
+.round-scroller {
+width: 90%;
+height: 60%;
+overflow-y: scroll;
+scrollbar-width: thin;
+}
+
+.link-style {
+    color: black;
+    padding-inline: 10px;
+}
