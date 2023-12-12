@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../stylesheets/position.css'
 
 const LoginPage = () => {
   const [messageLogin, setMessageLogin] = useState('');
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(undefined);
+
+  const navigate = useNavigate();
 
 
   const handleLogin = async (credentials) => {
@@ -23,6 +25,7 @@ const LoginPage = () => {
         // Authentification réussie
         setMessageLogin('Authentification réussie!');
         setIsLogged(true);
+        navigate('/home');
       } else {
         // Gérer les erreurs d'authentification
         setMessageLogin('Veuillez entrer un identifiant et un mot de passe valide.');
@@ -39,7 +42,7 @@ const LoginPage = () => {
     <div className="center-container">
       <h1>Page de connexion</h1>
       <LoginForm onLogin={handleLogin} />
-      <p className= {isLogged ? 'validMessage' : 'errorMessage'}>{messageLogin}</p>
+      <p className= {isLogged ? 'validMessage' : isLogged == false ? 'errorMessage' : ''}>{messageLogin}</p>
     </div>
   );
 }
