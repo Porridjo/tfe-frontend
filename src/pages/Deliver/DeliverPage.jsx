@@ -71,7 +71,7 @@ const DeliverPage = () => {
                                         <p>{nursery.creche.nom}</p>
                                     </Link>
                                     <button onClick={() => {handleChangeStatut(nursery.creche.nom, nursery.creche.statut)}} className={nursery.creche.statut === 'livré' ? 'statut-button-delivered' : 'statut-button-not-delivered'}> 
-                                        {nursery.creche.statut} 
+                                        {nursery.creche.statut === undefined ? 'Pas de statut' : nursery.creche.statut} 
                                     </button>
                                 </div>
                             )

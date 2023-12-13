@@ -23,7 +23,7 @@ const getOneNursery = (nurseryName) => {
 }
 
 const updateNurseryStatut = (nurseryName, statut) => {
-    const request = axios.post(baseUrl.concat(`/changerstatut/${nurseryName}`), statut, headers)
+    const request = axios.post(baseUrl.concat(`changerstatut/${nurseryName}`), statut, headers)
     return request
         .then(response => {
             console.log('promise for nursery fulfilled')
