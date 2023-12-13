@@ -1,6 +1,4 @@
 const manifestForPlugIn = {
-    registerType:'prompt',
-    includeAssests:['favicon.ico', "apple-touch-icon.png", "maskable-icon.svg"],
     manifest:{
       name:"React-vite-app",
       short_name:"react-vite-app",
@@ -24,7 +22,7 @@ const manifestForPlugIn = {
         purpose:'apple touch icon',
       },
       {
-        src: '/maskable_icon.png',
+        src: '/maskable-icon.png',
         sizes:'512x512',
         type:'image/png',
         purpose:'any maskable',
