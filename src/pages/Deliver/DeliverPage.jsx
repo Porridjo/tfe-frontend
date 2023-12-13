@@ -9,6 +9,8 @@ const DeliverPage = () => {
     const [nurseries, setNurseries] = useState([])
     const navigate = useNavigate()
     const roundName = useParams().roundname
+    const user = JSON.parse(localStorage.getItem('user'))?.user || null
+    let componentToRender
     
     useEffect(() => {
         roundService
@@ -65,11 +67,23 @@ const DeliverPage = () => {
                 {nurseries.length > 0 ? (
                     <>
                         {nurseries.map((nursery, index) => {
-                            return (
-                                <div className='scroller-item' key={index}>
+                            if (user.isAdmin){
+                                // REMPLACER "/" PAR ROUTE MODIFICATION COMMANDE POUR ADMIN
+                                componentToRender = (
+                                    <Link className='link-style' to={`/`}>                            
+                                        <p>{nursery.creche.nom}</p>
+                                    </Link>
+                                )
+                            } else {
+                                componentToRender = (
                                     <Link className='link-style' to={`/round/${roundName}/${nursery.creche.nom}`}>                            
                                         <p>{nursery.creche.nom}</p>
                                     </Link>
+                                )
+                            }
+                            return (
+                                <div className='scroller-item' key={index}>
+                                    {componentToRender}
                                     <button onClick={() => {handleChangeStatut(nursery.creche.nom, nursery.creche.statut)}} className={nursery.creche.statut === 'livré' ? 'statut-button-delivered' : 'statut-button-not-delivered'}> 
                                         {nursery.creche.statut === undefined ? 'Pas de statut' : nursery.creche.statut} 
                                     </button>
