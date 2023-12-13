@@ -8,6 +8,7 @@ import RoundCreationPage from "../pages/Round/RoundCreation/RoundCreationPage";
 import OrderCreationPage from "../pages/OrderCreation/OrderCreationPage";
 import OrderCreationPage2 from "../pages/OrderCreation/OrderCreationPage2";
 import ArticleCreationPage from "../pages/Article/ArticleCreationPage";
+import UserCreationPage from "../pages/User/UserCreationPage";
 
 const App = () => {
 
@@ -39,6 +40,7 @@ const App = () => {
       <Route path="/round/create-round/addorder" element={user ? <OrderCreationPage formData={formData} setFormData={setFormData} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder2" element={user ? <OrderCreationPage2 formData={formData} setNurseries={setNurseries} /> : <Navigate replace to="/" />} />
       <Route path='/create-article' element={user ? <ArticleCreationPage /> : <Navigate replace to="/" />} />
+      <Route path='/create-user' element={user ? <UserCreationPage /> : <Navigate replace to="/" />} />
     </Routes>
     </>
   );
