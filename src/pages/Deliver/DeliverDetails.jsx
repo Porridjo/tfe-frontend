@@ -47,6 +47,11 @@ const DeliverDetails = () => {
                         <div className="info-nursery">
                             <p>Status : {nursery[0].creche.statut === undefined ? 'Pas de statut' : nursery[0].creche.statut}</p>
                         </div>
+                        {nursery[0].creche.telephone !== undefined ? (
+                            <div className="info-nursery">
+                                <p>Téléphone : {nursery[0].creche.telephone}</p>
+                            </div>
+                        ) : null}
                     </div>
                 </>
             ) : (
