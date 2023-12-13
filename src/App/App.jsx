@@ -5,10 +5,19 @@ import DeliverPage from "../pages/Deliver/DeliverPage";
 import DeliverDetails from "../pages/Deliver/DeliverDetails"
 import Home from "../pages/Home/Home";
 import { useState } from "react";
+import AddRoundPage from "../pages/Round/AddRound/AddRoundPage";
+import AddOrderPage from "../pages/AddOrder/AddOrderPage";
+import AddOrderPage2 from "../pages/AddOrder/AddOrderPage2";
 
 const App = () => {
 
   const [user, setUser] = useState(null);
+
+  const [formData, setFormData] = useState({
+    nurseryName: "",
+    nurseryAdress: "",
+    telephoneNumber: "",
+  })
 
   return (
     <Routes>
@@ -17,6 +26,10 @@ const App = () => {
       <Route path='/round' element={<RoundPage />} />
       <Route path='/round/:roundname' element={<DeliverPage />} />
       <Route path='/round/:roundname/:nurseryname' element={<DeliverDetails />} />
+
+      <Route path="/round/addround" element={<AddRoundPage />} />
+      <Route path="/round/addround/addorder" element={<AddOrderPage formData={formData} setFormData={setFormData} />} />
+      <Route path="/round/addround/addorder2" element={<AddOrderPage2 formData={formData} />} />
     </Routes>
   );
 };

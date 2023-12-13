@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const AddRoundPage = () => {
   const [roundName, setRoundName] = useState("")
@@ -39,6 +40,10 @@ const AddRoundPage = () => {
       <button onClick={addRound}>Enregistrer</button>
       <p>Entrer le nom de tournée: </p>
       <input type="text" value={roundName} onChange={handleChange}/>
+      <Link to={"/round/addround/addorder"}>
+        <button>Ajouter une commande</button>
+      </Link>
+      
     </>
   )
 }

@@ -30,7 +30,10 @@ const RoundPage = () => {
         <div className="center-container" style={{color: 'black'}}>
             <div className='between'>
                 <button className='margin-button'> Gérer articles </button>
-                <button className='margin-button'> Ajouter tournée </button>
+                <Link to={"/round/addround"}>
+                  <button className='margin-button'> Ajouter tournée </button>
+                </Link>
+                
             </div>
             <h2>Tournées</h2>
             <div className='round-scroller'>
