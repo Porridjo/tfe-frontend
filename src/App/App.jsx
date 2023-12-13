@@ -7,10 +7,11 @@ import { useState } from "react";
 import RoundCreationPage from "../pages/Round/RoundCreation/RoundCreationPage";
 import OrderCreationPage from "../pages/OrderCreation/OrderCreationPage";
 import OrderCreationPage2 from "../pages/OrderCreation/OrderCreationPage2";
+import ArticleCreationPage from "../pages/Article/ArticleCreationPage";
 
 const App = () => {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(localStorage.getItem('user') || null);
 
   const [formData, setFormData] = useState({
     nurseryName: "",
@@ -20,17 +21,26 @@ const App = () => {
 
   const [nurseries, setNurseries] = useState([])
 
+  const signOut = () => {
+    localStorage.removeItem('user')
+    setUser(null)
+  }
+
   return (
+    <>
+    {user && <button onClick={signOut}>Déconnexion</button>}
     <Routes>
-      <Route path="/" element={<LoginPage setUser={setUser} />} />
+      <Route path="/" element={user ? <Navigate replace to="/round"/> : <LoginPage setUser={setUser}/>} />
       <Route path='/round' element={user ? <RoundPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname' element={user ? <DeliverPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname/:nurseryname' element={user ? <DeliverDetails /> : <Navigate replace to="/" />} />
 
       <Route path="/round/create-round" element={user ? <RoundCreationPage nurseries={nurseries} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder" element={user ? <OrderCreationPage formData={formData} setFormData={setFormData} /> : <Navigate replace to="/" />} />
-      <Route path="/round/create-round/addorder2" element={user ? <OrderCreationPage2 formData={formData} nurseries={nurseries} setNurseries={setNurseries} /> : <Navigate replace to="/" />} />
+      <Route path="/round/create-round/addorder2" element={user ? <OrderCreationPage2 formData={formData} setNurseries={setNurseries} /> : <Navigate replace to="/" />} />
+      <Route path='/create-article' element={user ? <ArticleCreationPage /> : <Navigate replace to="/" />} />
     </Routes>
+    </>
   );
 };
 
