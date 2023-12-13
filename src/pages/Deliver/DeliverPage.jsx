@@ -67,19 +67,21 @@ const DeliverPage = () => {
                 {nurseries.length > 0 ? (
                     <>
                         {nurseries.map((nursery, index) => {
-                            if (user.isAdmin){
-                                // REMPLACER "/" PAR ROUTE MODIFICATION COMMANDE POUR ADMIN
-                                componentToRender = (
-                                    <Link className='link-style' to={`/`}>                            
-                                        <p>{nursery.creche.nom}</p>
-                                    </Link>
-                                )
-                            } else {
-                                componentToRender = (
-                                    <Link className='link-style' to={`/round/${roundName}/${nursery.creche.nom}`}>                            
-                                        <p>{nursery.creche.nom}</p>
-                                    </Link>
-                                )
+                            if (user){
+                                if (user.isAdmin){
+                                    // REMPLACER "/" PAR ROUTE MODIFICATION COMMANDE POUR ADMIN
+                                    componentToRender = (
+                                        <Link className='link-style' to={`/`}>                            
+                                            <p>{nursery.creche.nom}</p>
+                                        </Link>
+                                    )
+                                } else {
+                                    componentToRender = (
+                                        <Link className='link-style' to={`/round/${roundName}/${nursery.creche.nom}`}>                            
+                                            <p>{nursery.creche.nom}</p>
+                                        </Link>
+                                    )
+                                }
                             }
                             return (
                                 <div className='scroller-item' key={index}>

@@ -6,6 +6,7 @@ import roundService from '../../services/rounds'
 const RoundPage = () => {
    
     const [rounds, setRounds] = useState([])
+    const user = JSON.parse(localStorage.getItem('user'))?.user || null
 
     useEffect(() => {
         roundService
@@ -27,18 +28,19 @@ const RoundPage = () => {
 
     return (
         <div className="center-container" style={{color: 'black'}}>
-            <div className='between'>
-                <Link to="/create-user">
-                  <button className='margin-button'> Créer des utilisateurs </button>
-                </Link>
-                <Link to="/create-article">
-                  <button className='margin-button'> Gérer articles </button>
-                </Link>
-                <Link to={"/round/create-round"}>
-                  <button className='margin-button'> Ajouter tournée </button>
-                </Link>
-                
-            </div>
+            {user && user.isAdmin && 
+                <div className='between'>
+                    <Link to="/create-user">
+                    <button className='margin-button'> Créer des utilisateurs </button>
+                    </Link>
+                    <Link to="/create-article">
+                    <button className='margin-button'> Gérer articles </button>
+                    </Link>
+                    <Link to={"/round/create-round"}>
+                    <button className='margin-button'> Ajouter tournée </button>
+                    </Link>
+                </div>
+            }
             <h2>Tournées</h2>
             <div className='round-scroller'>
                 {rounds.length > 0 ? (
