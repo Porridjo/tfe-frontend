@@ -3,7 +3,6 @@ import LoginPage from "../pages/Login/LoginPage";
 import RoundPage from "../pages/Round/RoundPage";
 import DeliverPage from "../pages/Deliver/DeliverPage";
 import DeliverDetails from "../pages/Deliver/DeliverDetails"
-import Home from "../pages/Home/Home";
 import { useState } from "react";
 import AddRoundPage from "../pages/Round/AddRound/AddRoundPage";
 import AddOrderPage from "../pages/AddOrder/AddOrderPage";
@@ -19,17 +18,18 @@ const App = () => {
     telephoneNumber: "",
   })
 
+  const [nurseries, setNurseries] = useState([])
+
   return (
     <Routes>
       <Route path="/" element={<LoginPage setUser={setUser} />} />
-      <Route path="/home" element={user ? <Home /> : <Navigate replace to="/" />} />
-      <Route path='/round' element={<RoundPage />} />
-      <Route path='/round/:roundname' element={<DeliverPage />} />
-      <Route path='/round/:roundname/:nurseryname' element={<DeliverDetails />} />
+      <Route path='/round' element={user ? <RoundPage /> : <Navigate replace to="/" />} />
+      <Route path='/round/:roundname' element={user ? <DeliverPage /> : <Navigate replace to="/" />} />
+      <Route path='/round/:roundname/:nurseryname' element={user ? <DeliverDetails /> : <Navigate replace to="/" />} />
 
-      <Route path="/round/addround" element={<AddRoundPage />} />
-      <Route path="/round/addround/addorder" element={<AddOrderPage formData={formData} setFormData={setFormData} />} />
-      <Route path="/round/addround/addorder2" element={<AddOrderPage2 formData={formData} />} />
+      <Route path="/round/addround" element={user ? <AddRoundPage nurseries={nurseries} /> : <Navigate replace to="/" />} />
+      <Route path="/round/addround/addorder" element={user ? <AddOrderPage formData={formData} setFormData={setFormData} /> : <Navigate replace to="/" />} />
+      <Route path="/round/addround/addorder2" element={user ? <AddOrderPage2 formData={formData} nurseries={nurseries} setNurseries={setNurseries} /> : <Navigate replace to="/" />} />
     </Routes>
   );
 };

@@ -1,16 +1,18 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import "/src/stylesheets/AddOrderPage.css"
 
-const AddOrderPage2 = ({ formData }) => {
+const AddOrderPage2 = ({ formData, nurseries, setNurseries }) => {
   const [orderedArticles, setOrderedArticles] = useState([])
   const [articles, setArticles] = useState([])
-
   const [formData2, setFormData2] = useState({
     name: "",
     quantity: "",
   })
+
+  const navigate = useNavigate();
 
   const token = localStorage.getItem('user');
 
@@ -26,8 +28,7 @@ const AddOrderPage2 = ({ formData }) => {
       .then(response => setArticles(response.data))
   }, [])
 
-  console.log(formData2)
-  console.log(formData)
+  console.log(orderedArticles)
 
   const handleOnChange = (e) => {
     const { name, value } = e.target
@@ -37,6 +38,17 @@ const AddOrderPage2 = ({ formData }) => {
         [name]: value
       }
     })
+  }
+
+  const handleOnChangeOrderedArticles = (e, index) => {
+
+    const newArray = [...orderedArticles]
+
+    const { value } = e.target
+
+    newArray[index] = {...newArray[index], quantity: value}
+
+    setOrderedArticles(newArray)
   }
 
   const addArticle = () => {
@@ -49,8 +61,19 @@ const AddOrderPage2 = ({ formData }) => {
     })
   }
 
+  const deleteArticle = (index) => {
+    const newArray = [...orderedArticles].filter((article, i) => i !== index)
+    setOrderedArticles(newArray)
+  }
+
   const saveOrder = () => {
-    console.log("je vais dormir")
+    const newNursery = {
+      nom: formData.nurseryName,
+      adresse: formData.nurseryAdress,
+      articles: orderedArticles,
+    }
+    setNurseries(prevNurseries => [...prevNurseries, newNursery])
+    navigate('/round/addround/')
   }
 
   return (
@@ -59,14 +82,25 @@ const AddOrderPage2 = ({ formData }) => {
         <button>Retour</button>
       </Link>
       <button onClick={saveOrder}>Enregistrer</button>
-      <ul>
-      {orderedArticles.map((orderedArticle, index) => <li key={index}>{orderedArticle.name} {orderedArticle.quantity}</li>)}
-      </ul>
+      <div className="order-list">
+        <ul>
+        {orderedArticles.map((orderedArticle, index) => {
+          return (
+            <li key={index} className="article-li">
+              <div>{orderedArticle.name}</div>
+              <input type="number" value={orderedArticle.quantity} onChange={(e) => handleOnChangeOrderedArticles(e, index)}/>
+              <button onClick={() => deleteArticle(index)}>Supprimer</button>
+            </li>
+          )})}
+        </ul>
+      </div>
+      
       
       <select name="name" value={formData2.name} onChange={handleOnChange}>
+        <option>Sélectionner un article</option>
         {articles.map((article, index) => <option key={index}>{article.article.nom}</option>)}
       </select>
-      <input name="quantity" type="text" value={formData2.quantity} onChange={handleOnChange} />
+      <input name="quantity" type="number" value={formData2.quantity} onChange={handleOnChange} min="0" />
       <button onClick={addArticle}>Ajouter un article</button>
     </>
     

@@ -3,9 +3,9 @@ import axios from "axios"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 
-const AddRoundPage = () => {
+const AddRoundPage = ({ nurseries }) => {
   const [roundName, setRoundName] = useState("")
-  const [nurseries, setNurseries] = useState([])
+  console.log(nurseries)
 
   /*
   useEffect(() => {
@@ -43,6 +43,9 @@ const AddRoundPage = () => {
       <Link to={"/round/addround/addorder"}>
         <button>Ajouter une commande</button>
       </Link>
+      <ul>
+        {nurseries.map((nursery, index) => <li key={index}>{nursery.nom}</li>)}
+      </ul>
       
     </>
   )

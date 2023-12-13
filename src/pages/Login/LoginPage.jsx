@@ -28,7 +28,7 @@ const LoginPage = ({setUser}) => {
         setUser(credentials.username);
         const data = await response.json();
         localStorage.setItem("user", data.access_token)
-        navigate('/home');
+        navigate('/round');
       } else {
         // Gérer les erreurs d'authentification
         setMessageLogin('Veuillez entrer un identifiant et un mot de passe valide.');
