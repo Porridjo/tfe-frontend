@@ -42,9 +42,14 @@
 
 .articles-scroller {
     width: 90%;
-    height: 70%;
+    height: 50%;
     overflow-y: scroll;
     scrollbar-width: thin;
+}
+
+.info-nursery {
+    margin-inline: 10px;
+    margin-bottom: 20px;
 }
 
 .link-style {
@@ -60,3 +65,7 @@
 .statut-button-not-delivered {
     background-color: rgb(184, 38, 38);
     color: white;}
+
+.small-linespacing {
+    line-height: 0.7;
+}
