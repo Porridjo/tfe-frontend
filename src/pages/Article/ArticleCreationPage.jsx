@@ -44,8 +44,10 @@ const ArticleCreationPage = () => {
 
     axios
       .post('http://localhost:5000/articles/', {nom: newArticle}, headers)
-      .then(response => setArticles(response.data))
+      .then(response => setArticles(prevArticles => [...prevArticles, response.data[0]]))
       .catch(error => console.log(error))
+
+    setNewArticle('')
   }
 
   return (

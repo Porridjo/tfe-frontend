@@ -29,7 +29,9 @@ const RoundPage = () => {
     return (
         <div className="center-container" style={{color: 'black'}}>
             <div className='between'>
-                <button className='margin-button'> Gérer articles </button>
+                <Link to="/create-article">
+                  <button className='margin-button'> Gérer articles </button>
+                </Link>
                 <Link to={"/round/create-round"}>
                   <button className='margin-button'> Ajouter tournée </button>
                 </Link>

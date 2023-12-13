@@ -19,6 +19,8 @@ const AddRoundPage = ({ nurseries }) => {
     setRoundName(e.target.value)
   }
 
+  const token = localStorage.getItem('user');
+
   const addRound = () => {
     const round = {
       nom: roundName,
@@ -26,11 +28,14 @@ const AddRoundPage = ({ nurseries }) => {
     }
     const headers = {
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
+        
       }
     }
+    console.log(round)
     axios
-      .post("https://tfe-group10-prod.azurewebsites.net/tournees/", round, headers)
+      .post("http://localhost:5000/tournees/", round, headers)
       .then(response => console.log(response.data))
       .catch(error => console.log(error))
   }
