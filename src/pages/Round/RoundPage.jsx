@@ -29,6 +29,9 @@ const RoundPage = () => {
     return (
         <div className="center-container" style={{color: 'black'}}>
             <div className='between'>
+                <Link to="/create-user">
+                  <button className='margin-button'> Créer des utilisateurs </button>
+                </Link>
                 <Link to="/create-article">
                   <button className='margin-button'> Gérer articles </button>
                 </Link>

@@ -1,11 +1,11 @@
 import { useState } from "react"
 import axios from "axios"
 import { useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const AddRoundPage = ({ nurseries }) => {
   const [roundName, setRoundName] = useState("")
-  console.log(nurseries)
+  const navigate = useNavigate()
 
   /*
   useEffect(() => {
@@ -33,11 +33,12 @@ const AddRoundPage = ({ nurseries }) => {
         
       }
     }
-    console.log(round)
     axios
       .post("http://localhost:5000/tournees/", round, headers)
       .then(response => console.log(response.data))
       .catch(error => console.log(error))
+    
+    navigate('/round')
   }
 
   return (
