@@ -40,7 +40,7 @@ const AddRoundPage = ({ nurseries }) => {
       <button onClick={addRound}>Enregistrer</button>
       <p>Entrer le nom de tournée: </p>
       <input type="text" value={roundName} onChange={handleChange}/>
-      <Link to={"/round/addround/addorder"}>
+      <Link to={"/round/create-round/addorder"}>
         <button>Ajouter une commande</button>
       </Link>
       <ul>

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import "/src/stylesheets/AddOrderPage.css"
 
-const AddOrderPage2 = ({ formData, nurseries, setNurseries }) => {
+const OrderCreationPage2 = ({ formData, nurseries, setNurseries }) => {
   const [orderedArticles, setOrderedArticles] = useState([])
   const [articles, setArticles] = useState([])
   const [formData2, setFormData2] = useState({
@@ -70,15 +70,16 @@ const AddOrderPage2 = ({ formData, nurseries, setNurseries }) => {
     const newNursery = {
       nom: formData.nurseryName,
       adresse: formData.nurseryAdress,
+      telephone: formData.telephoneNumber,
       articles: orderedArticles,
     }
     setNurseries(prevNurseries => [...prevNurseries, newNursery])
-    navigate('/round/addround/')
+    navigate('/round/create-round/')
   }
 
   return (
     <>
-      <Link to="/round/addround/addorder">
+      <Link to="/round/create-round/addorder">
         <button>Retour</button>
       </Link>
       <button onClick={saveOrder}>Enregistrer</button>
@@ -107,4 +108,4 @@ const AddOrderPage2 = ({ formData, nurseries, setNurseries }) => {
   )
 }
 
-export default AddOrderPage2
+export default OrderCreationPage2

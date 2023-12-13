@@ -4,7 +4,7 @@ import Input from '../../components/Input/Input';
 
 
 
-const AddOrderPage = ({ formData, setFormData }) => {
+const OrderCreationPage = ({ formData, setFormData }) => {
 
   console.log(formData)
 
@@ -19,7 +19,7 @@ const AddOrderPage = ({ formData, setFormData }) => {
 
   return (
     <>
-      <Link to="/round/addround/addorder2">
+      <Link to="/round/create-round/addorder2">
         <button>Suivant</button>
       </Link>
       
@@ -31,4 +31,4 @@ const AddOrderPage = ({ formData, setFormData }) => {
   )
 }
 
-export default AddOrderPage;
+export default OrderCreationPage;
