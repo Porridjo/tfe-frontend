@@ -6,7 +6,9 @@ let token
 let headers
 
 const getOneNursery = (nurseryName) => {
-    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    if (!token){
+        token = JSON.parse(localStorage.getItem('user')).access_token
+    }
     headers =  {
         headers: {
             Authorization: `Bearer ${token}`
@@ -24,7 +26,9 @@ const getOneNursery = (nurseryName) => {
 }
 
 const updateNurseryStatut = (nurseryName, statut) => {
-    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    if (!token){
+        token = JSON.parse(localStorage.getItem('user')).access_token
+    }
     headers =  {
         headers: {
             Authorization: `Bearer ${token}`

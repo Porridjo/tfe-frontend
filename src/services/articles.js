@@ -6,7 +6,9 @@ let token
 let headers
 
 const getAllArticles = () => {
-  token = JSON.parse(localStorage.getItem('user'))?.access_token
+  if (!token){
+    token = JSON.parse(localStorage.getItem('user')).access_token
+  }
   headers =  {
       headers: {
           Authorization: `Bearer ${token}`
@@ -24,7 +26,9 @@ const getAllArticles = () => {
 }
 
 const addOneArticle = (article) => {
-  token = JSON.parse(localStorage.getItem('user'))?.access_token
+  if (!token){
+    token = JSON.parse(localStorage.getItem('user')).access_token
+  }
   const postHeader = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -44,7 +48,9 @@ const addOneArticle = (article) => {
 }
 
 const deleteOneArticle = (articleName) => {
-  token = JSON.parse(localStorage.getItem('user'))?.access_token
+  if (!token){
+    token = JSON.parse(localStorage.getItem('user')).access_token
+  }
   headers =  {
       headers: {
           Authorization: `Bearer ${token}`
