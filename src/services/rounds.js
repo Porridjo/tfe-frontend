@@ -2,15 +2,16 @@ import axios from "axios";
 
 const baseUrl = 'http://localhost:5000/tournees/'
 
-const token = JSON.parse(localStorage.getItem('user'))?.access_token;
-
-const headers = {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-}
+let token
+let headers
 
 const getAllRounds = () => {
+    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    headers =  {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     const request = axios.get(baseUrl, headers)
     return request
         .then(response => {
@@ -23,6 +24,12 @@ const getAllRounds = () => {
 }
 
 const getOneRound = (roundName) => {
+    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    headers =  {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     const request = axios.get(baseUrl.concat(`${roundName}`), headers)
     return request
         .then(response => {
@@ -36,6 +43,12 @@ const getOneRound = (roundName) => {
 }
 
 const deleteOneRound = (roundName) => {
+    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    headers =  {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     const request = axios.delete(baseUrl.concat(`${roundName}`), headers)
     return request
         .then(response => {
@@ -47,6 +60,13 @@ const deleteOneRound = (roundName) => {
 }
 
 const createOneRound = (newRound) => {
+    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    headers =  {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    }
   const postHeader = {
     headers: {
       Authorization: `Bearer ${token}`,

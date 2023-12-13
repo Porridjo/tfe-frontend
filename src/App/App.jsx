@@ -21,9 +21,7 @@ const App = () => {
     nurseryAdress: "",
     telephoneNumber: "",
   })
-
-  console.log(user)
-
+  
   const [nurseries, setNurseries] = useState([])
 
   const signOut = () => {

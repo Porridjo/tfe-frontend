@@ -2,15 +2,16 @@ import axios from "axios";
 
 const baseUrl = 'http://localhost:5000/creches/'
 
-const token = JSON.parse(localStorage.getItem('user'))?.access_token;
-
-const headers = {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-}
+let token
+let headers
 
 const getOneNursery = (nurseryName) => {
+    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    headers =  {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     const request = axios.get(baseUrl.concat(`${nurseryName}`), headers)
     return request
         .then(response => {
@@ -23,6 +24,12 @@ const getOneNursery = (nurseryName) => {
 }
 
 const updateNurseryStatut = (nurseryName, statut) => {
+    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    headers =  {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     const request = axios.post(baseUrl.concat(`changerstatut/${nurseryName}`), statut, headers)
     return request
         .then(response => {

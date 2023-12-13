@@ -2,15 +2,16 @@ import axios from "axios"
 
 const baseUrl = 'http://localhost:5000/articles/'
 
-const token = JSON.parse(localStorage.getItem('user'))?.access_token;
-
-const headers = {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-}
+let token
+let headers
 
 const getAllArticles = () => {
+  token = JSON.parse(localStorage.getItem('user'))?.access_token
+  headers =  {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
   const request = axios.get(baseUrl, headers)
   return request
       .then(response => {
@@ -23,6 +24,7 @@ const getAllArticles = () => {
 }
 
 const addOneArticle = (article) => {
+  token = JSON.parse(localStorage.getItem('user'))?.access_token
   const postHeader = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -42,6 +44,12 @@ const addOneArticle = (article) => {
 }
 
 const deleteOneArticle = (articleName) => {
+  token = JSON.parse(localStorage.getItem('user'))?.access_token
+  headers =  {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
   const request = axios.delete(baseUrl.concat(`${articleName}`), headers)
   return request
       .then(response => {
