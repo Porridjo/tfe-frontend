@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import "/src/stylesheets/AddOrderPage.css"
+import articleService from '/src/services/articles.js'
 
 const OrderCreationPage2 = ({ formData, setNurseries }) => {
   const [orderedArticles, setOrderedArticles] = useState([])
@@ -14,18 +15,10 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
 
   const navigate = useNavigate();
 
-  const token = JSON.parse(localStorage.getItem('user'))?.access_token;
-
-  const headers = {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }
-
   useEffect(() => {
-    axios
-      .get('http://localhost:5000/articles/', headers)
-      .then(response => setArticles(response.data))
+    articleService
+      .getAllArticles()
+      .then(articles => setArticles(articles))
   }, [])
 
   console.log(orderedArticles)

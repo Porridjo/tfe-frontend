@@ -14,7 +14,6 @@ const OrderCreationPage = ({ formData, setFormData }) => {
       ...prevFormData,
       [name]: value
     }))
-
   }
 
   return (

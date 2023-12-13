@@ -22,6 +22,8 @@ const App = () => {
     telephoneNumber: "",
   })
 
+  console.log(user)
+
   const [nurseries, setNurseries] = useState([])
 
   const signOut = () => {
@@ -39,7 +41,7 @@ const App = () => {
       <Route path='/round/:roundname' element={user ? <DeliverPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname/:nurseryname' element={user ? <DeliverDetails /> : <Navigate replace to="/" />} />
 
-      <Route path="/round/create-round" element={user ? <RoundCreationPage nurseries={nurseries} /> : <Navigate replace to="/" />} />
+      <Route path="/round/create-round" element={user ? <RoundCreationPage nurseries={nurseries} setFormData={setFormData} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder" element={user ? <OrderCreationPage formData={formData} setFormData={setFormData} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder2" element={user ? <OrderCreationPage2 formData={formData} setNurseries={setNurseries} /> : <Navigate replace to="/" />} />
       <Route path='/create-article' element={user ? <ArticleCreationPage /> : <Navigate replace to="/" />} />

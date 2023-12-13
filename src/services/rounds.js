@@ -46,4 +46,23 @@ const deleteOneRound = (roundName) => {
         })
 }
 
-export default { getAllRounds, getOneRound, deleteOneRound }
+const createOneRound = (newRound) => {
+  const postHeader = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      
+    }
+  }
+  const request = axios.post(baseUrl, newRound, headers)
+    return request
+        .then(response => {
+            console.log('promise fulfilled')
+        })
+        .catch(error => {
+            console.log('fail :', error)
+        })
+
+}
+
+export default { getAllRounds, getOneRound, deleteOneRound, createOneRound }
