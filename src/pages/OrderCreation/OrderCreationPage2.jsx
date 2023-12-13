@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import "/src/stylesheets/AddOrderPage.css"
 
-const OrderCreationPage2 = ({ formData, nurseries, setNurseries }) => {
+const OrderCreationPage2 = ({ formData, setNurseries }) => {
   const [orderedArticles, setOrderedArticles] = useState([])
   const [articles, setArticles] = useState([])
   const [formData2, setFormData2] = useState({
