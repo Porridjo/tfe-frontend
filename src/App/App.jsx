@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import LoginPage from "../pages/Login/LoginPage";
 import RoundPage from "../pages/Round/RoundPage";
 import DeliverPage from "../pages/Deliver/DeliverPage";
@@ -12,7 +12,9 @@ import UserCreationPage from "../pages/User/UserCreationPage";
 
 const App = () => {
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')).user || null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user'))?.user || null);
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     nurseryName: "",
@@ -25,6 +27,7 @@ const App = () => {
   const signOut = () => {
     localStorage.removeItem('user')
     setUser(null)
+    navigate("/")
   }
 
   return (

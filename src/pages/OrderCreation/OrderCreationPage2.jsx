@@ -14,7 +14,7 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
 
   const navigate = useNavigate();
 
-  const token = JSON.parse(localStorage.getItem('user')).access_token;
+  const token = JSON.parse(localStorage.getItem('user'))?.access_token;
 
   const headers = {
     headers: {

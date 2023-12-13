@@ -11,7 +11,7 @@ const UserCreationPage = () => {
     isAdmin: false,
   })
 
-  const token = JSON.parse(localStorage.getItem('user')).access_token;
+  const token = JSON.parse(localStorage.getItem('user'))?.access_token;
 
   const handleOnChange = (e) => {
     const { name, value, type, checked } = e.target
