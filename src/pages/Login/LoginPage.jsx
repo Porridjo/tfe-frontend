@@ -27,7 +27,7 @@ const LoginPage = ({setUser}) => {
         setIsLogged(true);
         setUser(credentials.username);
         const data = await response.json();
-        localStorage.setItem("user", data.access_token)
+        localStorage.setItem("user", JSON.stringify(data))
         navigate('/round');
       } else {
         // Gérer les erreurs d'authentification

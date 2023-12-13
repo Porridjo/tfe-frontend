@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = 'http://localhost:5000/creches/'
 
-const token = localStorage.getItem('user');
+const token = JSON.parse(localStorage.getItem('user')).access_token;
 
 const headers = {
   headers: {

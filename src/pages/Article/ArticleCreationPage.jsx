@@ -7,7 +7,7 @@ const ArticleCreationPage = () => {
 
   const [newArticle, setNewArticle] = useState("")
 
-  const token = localStorage.getItem('user');
+  const token = JSON.parse(localStorage.getItem('user')).access_token;
 
   const headers = {
     headers: {

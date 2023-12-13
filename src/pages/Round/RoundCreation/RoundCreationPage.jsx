@@ -19,7 +19,7 @@ const AddRoundPage = ({ nurseries }) => {
     setRoundName(e.target.value)
   }
 
-  const token = localStorage.getItem('user');
+  const token = JSON.parse(localStorage.getItem('user')).access_token;
 
   const addRound = () => {
     const round = {

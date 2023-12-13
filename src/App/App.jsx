@@ -12,7 +12,7 @@ import UserCreationPage from "../pages/User/UserCreationPage";
 
 const App = () => {
 
-  const [user, setUser] = useState(localStorage.getItem('user') || null);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')).user || null);
 
   const [formData, setFormData] = useState({
     nurseryName: "",
