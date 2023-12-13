@@ -36,9 +36,9 @@ const RoundPage = () => {
             <div className='round-scroller'>
                 {rounds.length > 0 ? (
                     <>
-                        {rounds.map(object => {
+                        {rounds.map((object, index) => {
                             return (
-                                <div key={object.tournee.id} className='scroller-item'>
+                                <div key={index} className='scroller-item'>
                                     <Link to={`/round/${object.tournee.nom}`} className={'link-style'}>
                                         <p>{object.tournee.nom}</p>
                                     </Link>

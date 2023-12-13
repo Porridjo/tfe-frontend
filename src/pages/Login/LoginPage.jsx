@@ -26,6 +26,8 @@ const LoginPage = ({setUser}) => {
         setMessageLogin('Authentification réussie!');
         setIsLogged(true);
         setUser(credentials.username);
+        const data = await response.json();
+        localStorage.setItem("user", data.access_token)
         navigate('/home');
       } else {
         // Gérer les erreurs d'authentification

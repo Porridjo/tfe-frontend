@@ -1,9 +1,17 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:5000/tournees'
+const baseUrl = 'http://localhost:5000/tournees/'
+
+const token = localStorage.getItem('user');
+
+const headers = {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+}
 
 const getAllRounds = () => {
-    const request = axios.get(baseUrl)
+    const request = axios.get(baseUrl, headers)
     return request
         .then(response => {
             console.log('promise fulfilled')
@@ -15,7 +23,7 @@ const getAllRounds = () => {
 }
 
 const getOneRound = (roundName) => {
-    const request = axios.get(baseUrl.concat(`/${roundName}`))
+    const request = axios.get(baseUrl.concat(`${roundName}`), headers)
     return request
         .then(response => {
             console.log('promise for round fulfilled')
@@ -28,7 +36,7 @@ const getOneRound = (roundName) => {
 }
 
 const deleteOneRound = (roundName) => {
-    const request = axios.delete(baseUrl.concat(`/${roundName}`))
+    const request = axios.delete(baseUrl.concat(`${roundName}`), headers)
     return request
         .then(response => {
             console.log('promise fulfilled')
