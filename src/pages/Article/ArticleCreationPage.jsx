@@ -1,35 +1,23 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import '/src/stylesheets/ArticleCreationPage.css'
+import articleService from '/src/services/articles.js'
 
 const ArticleCreationPage = () => {
   const [articles, setArticles] = useState([])
 
   const [newArticle, setNewArticle] = useState("")
 
-  const token = JSON.parse(localStorage.getItem('user'))?.access_token;
-
-  const headers = {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }
-
   useEffect(() => {
-    axios
-      .get('http://localhost:5000/articles/', headers)
-      .then(response => setArticles(response.data))
-      .catch(error => console.log(error))
+    articleService
+      .getAllArticles()
+      .then(articles => setArticles(articles))
   }, [])
 
   const deleteArticle = (articleName) => {
-    axios
-      .delete(`http://localhost:5000/articles/${articleName}`, headers)
-      .then(response => console.log(response.data))
+    articleService
+      .deleteOneArticle(articleName)
       .then(() => setArticles(prevArticles => [...prevArticles].filter((article) => article.article.nom !== articleName)))
-      .catch(error => console.log(error))
-    
-    
   }
 
   const handleOnChange = (e) => {
@@ -42,11 +30,9 @@ const ArticleCreationPage = () => {
       return;
     }
 
-    axios
-      .post('http://localhost:5000/articles/', {nom: newArticle}, headers)
-      .then(response => setArticles(prevArticles => [...prevArticles, response.data[0]]))
-      .catch(error => console.log(error))
-
+    articleService
+      .addOneArticle({nom: newArticle})
+      .then(response => setArticles(prevArticles => [...prevArticles, response]))
     setNewArticle('')
   }
 

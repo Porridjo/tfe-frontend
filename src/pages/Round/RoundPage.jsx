@@ -15,7 +15,6 @@ const RoundPage = () => {
             })
     }, [])
     
-    console.log(rounds)
 
     const handleDeleteButton = (roundName) => {
         roundService

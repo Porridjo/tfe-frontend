@@ -2,42 +2,30 @@ import { useState } from "react"
 import axios from "axios"
 import { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import roundService from '/src/services/rounds.js'
 
-const AddRoundPage = ({ nurseries }) => {
+const AddRoundPage = ({ nurseries, setFormData }) => {
   const [roundName, setRoundName] = useState("")
   const navigate = useNavigate()
-
-  /*
-  useEffect(() => {
-    axios
-      .get('https://tfe-group10-prod.azurewebsites.net/tournees/')
-      .then(response => setRounds(response.data))
-  }, [])
-  */
 
   const handleChange = (e) => {
     setRoundName(e.target.value)
   }
-
-  const token = JSON.parse(localStorage.getItem('user'))?.access_token;
 
   const addRound = () => {
     const round = {
       nom: roundName,
       crèches: nurseries,
     }
-    const headers = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        
-      }
-    }
-    axios
-      .post("http://localhost:5000/tournees/", round, headers)
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error))
+  
+    roundService
+      .createOneRound(round)
     
+    setFormData({
+      nurseryName: "",
+      nurseryAdress: "",
+      telephoneNumber: "",
+    })
     navigate('/round')
   }
 
