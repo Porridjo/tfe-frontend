@@ -19,7 +19,7 @@ const RoundPage = () => {
 
     const handleDeleteButton = (roundName) => {
         roundService
-            .deleteOneRound()
+            .deleteOneRound(roundName)
             .then(() => {
                 const updatedRounds = rounds.filter(round => round.tournee.nom !== roundName)
                 setRounds(updatedRounds)
