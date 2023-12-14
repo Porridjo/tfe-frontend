@@ -65,17 +65,19 @@ const PresetCreationPage = () => {
             <tbody>
             {nurseries.map((nursery, index) => {
             return (
-              <Link to={`/round/${roundName}/preset/${nursery.creche.nom}`}>
+              
               <tr key={index}>
                 <td>
-                  <div>{nursery.creche.nom}</div>
+                  <Link to={`/round/${roundName}/preset/${nursery.creche.nom}`}>
+                    <div>{nursery.creche.nom}</div>
+                  </Link>
                   <div>{nursery.creche.adresse}</div>
                 </td>
                 <td>
                   <button onClick={() => addToPreset(nursery)}>Ajouter</button>
                 </td> 
               </tr>
-              </Link>
+              
             )})}
             </tbody>         
           </table>
@@ -90,17 +92,17 @@ const PresetCreationPage = () => {
               <tbody>
               {preset.map((nursery, index) => {
               return (
-                <Link to={`/round/${roundName}/preset/${nursery.creche.nom}`}>
                 <tr key={index}>
                   <td>
-                    <div>{nursery.creche.nom}</div>
+                    <Link to={`/round/${roundName}/preset/${nursery.creche.nom}`}>
+                      <div>{nursery.creche.nom}</div>
+                    </Link>
                     <div>{nursery.creche.adresse}</div>
                   </td>
                   <td>
                     <button onClick={() => removeFromPreset(nursery)}>Enlever</button>
                   </td> 
                 </tr>
-                </Link>
               )})}
               </tbody>         
             </table>

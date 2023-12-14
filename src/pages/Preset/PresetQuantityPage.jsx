@@ -39,7 +39,7 @@ const PresetQuantityPage = () => {
         });
         setOrderedArticles(articlesTemp);
     })
-  }, [nurseryname])
+  }, [])
 
   console.log("ordered items", orderedArticles)
 
