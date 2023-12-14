@@ -124,29 +124,9 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
             </tbody>
             
           </table>
-
-          {/* <div className="order-legend">
-            <p>Article</p>
-            <p>Quantité</p>
-            <div></div>
-          </div>
-          <ul>
-          {orderedArticles.map((orderedArticle, index) => {
-            return (
-              <li key={index} className="article-li">
-                <div>{orderedArticle.name}</div>
-                <input type="number" value={orderedArticle.quantity} onChange={(e) => handleOnChangeOrderedArticles(e, index)}/>
-                <button onClick={() => deleteArticle(index)}>Supprimer</button>
-              </li>
-            )})}
-          </ul> */}
         </div>
       
       </div>
-      
-      
-      
-      
     </div>
     
   )

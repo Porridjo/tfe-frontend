@@ -1,3 +1,58 @@
-.article-list > li {
+.article-creation-container {
+  height: 90vh;
   display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+
+.article-creation-div {
+  width: 70%;
+  height: 90%;
+  align-self: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
+
+.article-creation-div h2 {
+  text-align: center;
+}
+
+.table-container {
+  overflow-y: scroll;
+}
+
+.table-container table {
+  width: 100%;
+}
+
+.table-article-header {
+  font-size: 30px;
+}
+
+.table-container table tbody td {
+  text-align: center;
+}
+
+.article-creation-section {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.article-creation-section form > * {
+  margin-left: 15px;
+}
+
+.article-creation-section input:nth-child(2) {
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px black solid;
 }
