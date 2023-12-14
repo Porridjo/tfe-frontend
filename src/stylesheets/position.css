@@ -11,3 +11,8 @@
 .width-max {
   width: 100%;
 }
+
+.horizontal-align {
+  display: flex;
+  flex-direction: row;
+}

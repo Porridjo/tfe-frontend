@@ -9,6 +9,7 @@ import OrderCreationPage from "../pages/OrderCreation/OrderCreationPage";
 import OrderCreationPage2 from "../pages/OrderCreation/OrderCreationPage2";
 import ArticleCreationPage from "../pages/Article/ArticleCreationPage";
 import UserCreationPage from "../pages/User/UserCreationPage";
+import ModifyCommand from "../pages/ModifyCommand/ModifyCommand";
 
 const App = () => {
 
@@ -38,6 +39,8 @@ const App = () => {
       <Route path='/round' element={user ? <RoundPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname' element={user ? <DeliverPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname/:nurseryname' element={user ? <DeliverDetails /> : <Navigate replace to="/" />} />
+
+      <Route path='/modify/:roundname/:nurseryname' element={user ? <ModifyCommand/> : <Navigate replace to="/" />} />
 
       <Route path="/round/create-round" element={user ? <RoundCreationPage nurseries={nurseries} setFormData={setFormData} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder" element={user ? <OrderCreationPage formData={formData} setFormData={setFormData} /> : <Navigate replace to="/" />} />
