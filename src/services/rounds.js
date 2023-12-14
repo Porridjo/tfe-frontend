@@ -95,7 +95,6 @@ const editRoundPreset = (roundName, nurseries) => {
 const request = axios.post(baseUrl.concat(`${roundName}/editpreset`), nurseries, headers)
   return request
       .then(response => {
-          console.log('promise fulfilled')
           return response.data
       })
       .catch(error => {

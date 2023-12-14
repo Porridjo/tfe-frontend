@@ -11,8 +11,6 @@ const DeliverPage = () => {
     const roundName = useParams().roundname
     const user = JSON.parse(localStorage.getItem('user'))?.user || null
     let componentToRender
-
-    console.log(nurseries)
     
     useEffect(() => {
         roundService
