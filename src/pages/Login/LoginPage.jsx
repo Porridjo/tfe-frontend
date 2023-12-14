@@ -25,9 +25,9 @@ const LoginPage = ({setUser}) => {
         // Authentification réussie
         setMessageLogin('Authentification réussie!');
         setIsLogged(true);
-        setUser(credentials.username);
         const data = await response.json();
         localStorage.setItem("user", JSON.stringify(data))
+        setUser(credentials.username);
         navigate('/round');
       } else {
         // Gérer les erreurs d'authentification

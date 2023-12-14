@@ -33,7 +33,7 @@ const DeliverDetails = () => {
                 {nursery.length > 0 ? (
                     <>
                         <button className="button-deliver" onClick={() => navigate(`/round/${roundname}`)}> Retour </button>
-                        <h3>{nursery[0].creche.nom}</h3>
+                        <h3>Commande pour la crèche {nursery[0].creche.nom}</h3>
                         <div className="articles-scroller">
                             {articles.map((article) => (
                                 <div key={article.id}>
@@ -41,7 +41,7 @@ const DeliverDetails = () => {
                                 </div>
                             ))}
                         </div>
-                        <h3>Informations sur la crèche</h3>
+                        <h3>Informations sur la crèche {nursery[0].creche.nom}</h3>
                         <div className="info">
                             <div className="info-nursery">
                                 <p className="small-linespacing">Adresse :</p>
