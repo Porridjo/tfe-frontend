@@ -3,48 +3,68 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 100vh;
     width: 100%;
 }
 
-.nurseries-scroller {
+.button-deliver {
+    background-color: rgb(93, 93, 217);
+    margin-inline: 30px;
+    margin-top: 10px;
+}
+
+.nurseries-element {
     width: 90%;
+    height: 80%;
+    padding: 2%;
+    border: groove 2px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.nurseries-scroller {
     height: 45%;
     overflow-y: scroll;
     scrollbar-width: thin;
+    background-color: rgb(75, 152, 75);
+    padding: 3%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.scroller-item {
+.scroller-item-deliver {
     display: flex;
     justify-content: space-around;
     padding: 1%;
     margin-bottom: 50px;
-    border: 2px groove gray;
     border-radius: 5px;
+    background-color: rgb(242, 243, 233);
 }
 
 .info {
     margin-top: 10px;
-    width: 90%;
-    border: 2px groove black;
-    border-radius: 2px;
+    border-radius: 5px;
     justify-content: space-between;
     height: 20%;
     overflow-y: scroll;
     scrollbar-width: thin;
+    background-color:  rgb(242, 243, 233);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .article {
     margin-inline: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 15px;
     border-bottom: groove lightgray;
 }
 
 .articles-scroller {
-    width: 90%;
     height: 50%;
     overflow-y: scroll;
     scrollbar-width: thin;
+    background-color: rgb(242, 243, 233);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .info-nursery {

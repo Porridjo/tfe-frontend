@@ -1,0 +1,64 @@
+.round-creation-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+
+}
+
+.button-div {
+  width: 70%;
+  margin: 10px 50px;
+  align-self: center;
+  display: flex;
+  justify-content: end;
+}
+
+.round-form {
+  width: 70%;
+  height: 90%;
+  align-self: center;
+
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
+
+.round-form > h2 {
+  align-self: center;
+  margin: 30px 50px;
+}
+
+.round-input-div {
+  margin: 10px 36px;
+  display: flex;
+  align-items: center;
+
+}
+
+.round-input-div > input {
+  margin-left: 10px;
+  width: 300px;
+  height: 20px;
+
+}
+
+.add-order-btn {
+  margin: 20px 0 0 36px
+}
+
+.round-form > ul {
+  list-style-type: none;
+  padding: 0 36px;
+  overflow-y: scroll;
+}
+
+.round-form > ul li {
+  border: 1px black solid;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px;
+}

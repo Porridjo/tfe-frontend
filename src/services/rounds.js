@@ -6,7 +6,9 @@ let token
 let headers
 
 const getAllRounds = () => {
-    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    if (!token){
+        token = JSON.parse(localStorage.getItem('user')).access_token
+    }
     headers =  {
         headers: {
             Authorization: `Bearer ${token}`
@@ -24,7 +26,9 @@ const getAllRounds = () => {
 }
 
 const getOneRound = (roundName) => {
-    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    if (!token){
+        token = JSON.parse(localStorage.getItem('user')).access_token
+    }
     headers =  {
         headers: {
             Authorization: `Bearer ${token}`
@@ -43,7 +47,9 @@ const getOneRound = (roundName) => {
 }
 
 const deleteOneRound = (roundName) => {
-    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    if (!token){
+        token = JSON.parse(localStorage.getItem('user')).access_token
+    }
     headers =  {
         headers: {
             Authorization: `Bearer ${token}`
@@ -60,7 +66,9 @@ const deleteOneRound = (roundName) => {
 }
 
 const createOneRound = (newRound) => {
-    token = JSON.parse(localStorage.getItem('user'))?.access_token
+    if (!token){
+        token = JSON.parse(localStorage.getItem('user')).access_token
+    }
     headers =  {
         headers: {
             'Authorization': `Bearer ${token}`,

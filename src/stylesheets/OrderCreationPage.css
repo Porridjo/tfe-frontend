@@ -1,0 +1,46 @@
+.order-creation1-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.button-div {
+  width: 70%;
+  margin: 10px 50px;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-form {
+  width: 70%;
+  height: 90%;
+  align-self: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
+
+.order-form h2 {
+  margin: 30px 50px;
+  text-align: center;
+}
+
+.order-form .order-input-div {
+  margin: 10px 50px;
+}
+
+.order-form input {
+  margin-top: 10px;
+  width: 350px;
+  height: 30px;
+  border: 1px grey solid;
+  border-radius: 6px;
+}
+
+.order-form button {
+  margin: 30px 50px
+}

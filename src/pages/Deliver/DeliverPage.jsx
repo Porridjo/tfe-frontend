@@ -29,7 +29,7 @@ const DeliverPage = () => {
 
             let foundArticle = allArticles.find(existingArticle => existingArticle.name === object.article.nom)
             if (!foundArticle){
-                allArticles.push({name: object.article.nom, quantity: object.quantite, id: index})
+                allArticles.push({name: object.article.nom, quantity: object.quantite, unit: object?.unite, id: index})
                 index++
             } else {
                 let articleWithUpdatedQuantity = {
@@ -61,54 +61,58 @@ const DeliverPage = () => {
 
     return (
         <div className="deliver-container" style={{color: 'black'}}>
-            <button onClick={() => navigate('/round')}> Retour </button>
-            <h3>Crèches de la tournée</h3>
-            <div className='nurseries-scroller'>
-                {nurseries.length > 0 ? (
-                    <>
-                        {nurseries.map((nursery, index) => {
-                            if (user.isAdmin){
-                                componentToRender = (
-                                    <Link className='link-style' to={`/modify/${roundName}/${nursery.creche.nom}`}>                            
-                                        <p>{nursery.creche.nom}</p>
-                                    </Link>
+            <div className="nurseries-element">
+                <button className="button-deliver" onClick={() => navigate('/round')}> Retour </button>
+                <h3>Crèches de la tournée</h3>
+                <div className='nurseries-scroller'>
+                    {nurseries.length > 0 ? (
+                        <>
+                            {nurseries.map((nursery, index) => {
+                                if (user){
+                                    if (user.isAdmin){
+                                        componentToRender = (
+                                            <Link className='link-style' to={`/modify/${roundName}/${nursery.creche.nom}`}>                            
+                                                <p>{nursery.creche.nom}</p>
+                                            </Link>
+                                        )
+                                    } else {
+                                        componentToRender = (
+                                            <Link className='link-style' to={`/round/${roundName}/${nursery.creche.nom}`}>                            
+                                                <p>{nursery.creche.nom}</p>
+                                            </Link>
+                                        )
+                                    }
+                                }
+                                return (
+                                    <div className='scroller-item-deliver' key={index}>
+                                        {componentToRender}
+                                        <button onClick={() => {handleChangeStatut(nursery.creche.nom, nursery.creche.statut)}} className={nursery.creche.statut === 'livré' ? 'statut-button-delivered' : 'statut-button-not-delivered'}> 
+                                            {nursery.creche.statut === undefined ? 'Pas de statut' : nursery.creche.statut} 
+                                        </button>
+                                    </div>
                                 )
-                            } else {
-                                componentToRender = (
-                                    <Link className='link-style' to={`/round/${roundName}/${nursery.creche.nom}`}>                            
-                                        <p>{nursery.creche.nom}</p>
-                                    </Link>
+                            })}
+                        </>
+                    ) : (
+                        <div style={{textAlign: 'center'}}>C'est vide...</div>
+                    )}
+                    
+                </div>
+                <h3>Quantités d'articles</h3>
+                <div className="info">
+                    {allArticles.length > 0 ? (
+                        <>
+                            {allArticles.map(article => {
+                                return (
+                                    <p className='article' key={article.id}>{article.name}: {article.quantity} {article.unit !== undefined && article.unit}</p>
                                 )
-                            }
-                            return (
-                                <div className='scroller-item' key={index}>
-                                    {componentToRender}
-                                    <button onClick={() => {handleChangeStatut(nursery.creche.nom, nursery.creche.statut)}} className={nursery.creche.statut === 'livré' ? 'statut-button-delivered' : 'statut-button-not-delivered'}> 
-                                        {nursery.creche.statut === undefined ? 'Pas de statut' : nursery.creche.statut} 
-                                    </button>
-                                </div>
-                            )
-                        })}
-                    </>
-                ) : (
-                    <div style={{textAlign: 'center'}}>C'est vide...</div>
-                )}
-                
-            </div>
-            <h3>Quantités d'articles</h3>
-            <div className="info">
-                {allArticles.length > 0 ? (
-                    <>
-                        {allArticles.map(article => {
-                            return (
-                                <p className='article' key={article.id}>{article.name}: {article.quantity}</p>
-                            )
-                        })}
-                    </>
-                ) : (
-                    <div style={{textAlign: 'center'}}>C'est vide...</div>
-                )}
-                
+                            })}
+                        </>
+                    ) : (
+                        <div style={{textAlign: 'center'}}>C'est vide...</div>
+                    )}
+                    
+                </div>
             </div>
         </div>
     )
