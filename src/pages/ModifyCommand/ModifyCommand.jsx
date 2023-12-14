@@ -76,6 +76,7 @@ const ModifyCommand = () => {
 
   const handleSave = () => {
     nurseryService.updateNursery(nurseryname, articles);
+    navigate(`/round/${roundname}`)
   };
 
   return (
