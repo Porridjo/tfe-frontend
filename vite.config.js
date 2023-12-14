@@ -7,17 +7,6 @@ import manifestForPlugIn from './manifest'
 export default defineConfig({
   plugins: [
     react(), 
-    VitePWA({
-      manifest: {
-        icons: [
-          {
-            src: "/android-chrome-512x512.png",
-            sizes:"512x512",
-            type: "image/png",
-            purpose: "any maskable"
-          }
-        ]
-      }
-    })
+    VitePWA(manifestForPlugIn)
   ],
 })

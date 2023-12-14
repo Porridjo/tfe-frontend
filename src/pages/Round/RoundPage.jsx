@@ -31,34 +31,36 @@ const RoundPage = () => {
             {user && user.isAdmin && 
                 <div className='between'>
                     <Link to="/create-user">
-                    <button className='margin-button'> Créer des utilisateurs </button>
+                        <button className='button-round'> Créer des utilisateurs </button>
                     </Link>
                     <Link to="/create-article">
-                    <button className='margin-button'> Gérer articles </button>
+                        <button className='button-round'> Gérer articles </button>
                     </Link>
                     <Link to={"/round/create-round"}>
-                    <button className='margin-button'> Ajouter tournée </button>
+                        <button className='button-round'> Ajouter tournée </button>
                     </Link>
                 </div>
             }
-            <h2>Tournées</h2>
-            <div className='round-scroller'>
-                {rounds.length > 0 ? (
-                    <>
-                        {rounds.map((object, index) => {
-                            return (
-                                <div key={index} className='scroller-item'>
-                                    <Link to={`/round/${object.tournee.nom}`} className={'link-style'}>
-                                        <p>{object.tournee.nom}</p>
-                                    </Link>
-                                    <button onClick={() => handleDeleteButton(object.tournee.nom)}>Supprimer</button>
-                                </div>
-                            )
-                        })}
-                    </>
-                ) : (
-                    <div>Loading ...</div>
-                )}
+            <div className='round-element'>
+                <h2>Tournées</h2>
+                <div className='round-scroller'>
+                    {rounds.length > 0 ? (
+                        <>
+                            {rounds.map((object, index) => {
+                                return (
+                                    <div key={index} className='scroller-item-round'>
+                                        <Link to={`/round/${object.tournee.nom}`} className={'link-style'}>
+                                            <p>{object.tournee.nom}</p>
+                                        </Link>
+                                        <button className="button-delete-round" onClick={() => handleDeleteButton(object.tournee.nom)}>Supprimer</button>
+                                    </div>
+                                )
+                            })}
+                        </>
+                    ) : (
+                        <div>Loading ...</div>
+                    )}
+                </div>
             </div>
         </div>   
     )

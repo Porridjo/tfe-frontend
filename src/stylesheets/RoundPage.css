@@ -1,28 +1,49 @@
 .between {
     justify-content: space-between;
+    padding: 2%;
 }
 
-.margin-button {
+.button-round {
+    background-color: rgb(93, 93, 217);
     margin-inline: 30px;
+    margin-top: 10px;
 }
 
-.scroller-item {
+.round-element {
+    width: 90%;
+    height: 70%;
+    padding: 2%;
+    border: groove 2px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.scroller-item-round {
     display: flex;
     justify-content: space-around;
     padding: 1%;
     margin-bottom: 5%;
-    border: 2px groove gray;
     border-radius: 5px;
+    background-color: rgb(242, 243, 233);
 }
 
 .round-scroller {
-width: 90%;
-height: 60%;
-overflow-y: scroll;
-scrollbar-width: thin;
+    height: 80%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    background-color: rgb(75, 152, 75);
+    padding: 3%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .link-style {
     color: black;
-    padding-inline: 10px;
+    width: 50%;
+}
+
+.button-delete-round {
+    font-size: 15px;
+    background-color: rgb(172, 215, 112);
+    margin: 1%;
 }
