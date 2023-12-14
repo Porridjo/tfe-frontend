@@ -1,0 +1,8 @@
+.user-creation-container {
+    width: 90%;
+    height: 50vh;
+    padding: 2%;
+    border: groove 2px;
+    border-radius: 5px;
+    background-color: white;
+}
