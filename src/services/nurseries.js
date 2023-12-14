@@ -24,6 +24,26 @@ const getOneNursery = (nurseryName) => {
         })
 }
 
+const getAllNurseries = () => {
+  if (!token){
+      token = JSON.parse(localStorage.getItem('user')).access_token
+  }
+  headers =  {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
+  const request = axios.get(baseUrl, headers)
+  return request
+      .then(response => {
+          console.log('promise for nursery fulfilled')
+          return response.data
+      })
+      .catch(error => {
+          console.log('fail :', error)
+      })
+}
+
 const updateNursery = (nurseryName, newArticles) => {
 
     const resultObject = {
@@ -69,4 +89,4 @@ const updateNurseryStatut = (nurseryName, statut) => {
         })
 }
 
-export default { getOneNursery, updateNursery, updateNurseryStatut }
+export default { getOneNursery, getAllNurseries, updateNursery, updateNurseryStatut }
