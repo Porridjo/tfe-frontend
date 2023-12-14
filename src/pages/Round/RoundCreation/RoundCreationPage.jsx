@@ -33,6 +33,9 @@ const AddRoundPage = ({ nurseries, setFormData }) => {
   return (
     <div className="round-creation-container">
       <div className="button-div">
+        <Link to="/round">
+          <button>Retour</button>
+        </Link>
         <button onClick={addRound}>Enregistrer</button>
       </div>
       <div className="round-form">
