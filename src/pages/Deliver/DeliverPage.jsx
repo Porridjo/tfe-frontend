@@ -69,7 +69,6 @@ const DeliverPage = () => {
                         <>
                             {nurseries.map((nursery, index) => {
                                 if (user){
-                                    console.log(user)
                                     if (user.isAdmin){
                                         componentToRender = (
                                             <Link className='link-style' to={`/modify/${roundName}/${nursery.creche.nom}`}>                            
