@@ -45,7 +45,9 @@ const UserCreationPage = () => {
       },
     };
 
-    axios.post("http://localhost:5000/users/register", newUser, headers);
+    const baseApiUrl = process.env.NODE_ENV === 'production' ? 'https://tfe-group10-dev.azurewebsites.net' : 'http://localhost:5000';
+
+    axios.post(`${baseApiUrl}/users/register`, newUser, headers);
   };
 
   return (

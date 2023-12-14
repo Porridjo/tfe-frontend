@@ -11,10 +11,11 @@ const LoginPage = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleLogin = async (credentials) => {
+    const baseApiUrl = process.env.NODE_ENV === 'production' ? 'https://tfe-group10-dev.azurewebsites.net' : 'http://localhost:5000';
     try {
       // Effectuer l'appel à l'API pour le login
       const response = await axios.post(
-        "http://localhost:5000/users/login",
+        `${baseApiUrl}/users/login`,
         credentials,
         {
           headers: {

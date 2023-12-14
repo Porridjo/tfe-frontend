@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:5000/creches/'
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://tfe-group10-dev.azurewebsites.net/creches/' : 'http://localhost:5000/creches/';
 
 let token
 let headers
