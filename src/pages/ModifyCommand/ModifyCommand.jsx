@@ -15,13 +15,13 @@ const ModifyCommand = () => {
   const [formData2, setFormData2] = useState({
     name: "",
     quantity: 1,
-  })
+  });
 
   useEffect(() => {
     articleService
       .getAllArticles()
-      .then(articles => setAllArticles(articles))
-  }, [])
+      .then((articles) => setAllArticles(articles));
+  }, []);
 
   useEffect(() => {
     nurseryService.getOneNursery(nurseryname).then((foundNursery) => {
@@ -43,53 +43,57 @@ const ModifyCommand = () => {
   }, [nurseryname]);
 
   const handleFormChange = (e) => {
-    const { name, value } = e.target
-    setFormData2(prevFormData => {
+    const { name, value } = e.target;
+    setFormData2((prevFormData) => {
       return {
         ...prevFormData,
-        [name]: value
-      }
-    })
-  }
+        [name]: value,
+      };
+    });
+  };
 
   const addArticle = () => {
     if (formData2.name === "") {
-      alert('Sélectionner un article')
+      alert("Sélectionner un article");
       return;
     }
 
-    const articleExists = articles.some(article => article.name === formData2.name);
+    const articleExists = articles.some(
+      (article) => article.name === formData2.name
+    );
 
     if (articleExists) {
-      alert('Cet article est déjà dans la liste');
+      alert("Cet article est déjà dans la liste");
       return;
     }
 
     const newArticle = {
       name: formData2.name,
       quantity: formData2.quantity,
-    }
-    setArticles(prevState => {
-      return [...prevState, newArticle ]
-    })
-  }
+    };
+    setArticles((prevState) => {
+      return [...prevState, newArticle];
+    });
+  };
 
   const handleQuantityChange = (index, value) => {
     const newArticles = [...articles];
     newArticles[index].quantity = parseFloat(value);
-    const filtredArticles = newArticles.filter(article => article.quantity !== 0);
+    const filtredArticles = newArticles.filter(
+      (article) => article.quantity !== 0
+    );
     setArticles(filtredArticles);
   };
 
   const handleSave = () => {
     nurseryService.updateNursery(nurseryname, articles);
-    navigate(`/round/${roundname}`)
+    navigate(`/round/${roundname}`);
   };
 
   return (
-    <div className="deliver-container" style={{ color: "black" }}>
+    <div className="modify-container" style={{ color: "black" }}>
       {nursery.length > 0 ? (
-        <>
+        <div className="content-container">
           <div className="horizontal-align button-bar">
             <button onClick={() => navigate(`/round/${roundname}`)}>
               Retour
@@ -97,7 +101,7 @@ const ModifyCommand = () => {
             <h2>{nursery[0].creche.nom}</h2>
             <button onClick={handleSave}> Enregistrer </button>
           </div>
-          <div className="articles-scroller center-container">
+          <div className="modify-scroller center-container">
             {articles.map((article, i) => (
               <div key={i}>
                 <form>
@@ -115,15 +119,27 @@ const ModifyCommand = () => {
             ))}
           </div>
           <div className="add-article-section">
-            <select name="name" value={formData2.name} onChange={handleFormChange}>
+            <select
+              name="name"
+              value={formData2.name}
+              onChange={handleFormChange}
+            >
               <option>Sélectionner un article</option>
-              {allArticles.map((article, index) => <option key={index}>{article.article.nom}</option>)}
+              {allArticles.map((article, index) => (
+                <option key={index}>{article.article.nom}</option>
+              ))}
             </select>
             <p>Quantité:</p>
-            <input name="quantity" type="number" value={formData2.quantity} onChange={handleFormChange} min="0" />
+            <input
+              name="quantity"
+              type="number"
+              value={formData2.quantity}
+              onChange={handleFormChange}
+              min="0"
+            />
             <button onClick={addArticle}>Ajouter l'article</button>
           </div>
-        </>
+        </div>
       ) : (
         <div>Loading ...</div>
       )}

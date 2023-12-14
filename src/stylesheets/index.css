@@ -35,7 +35,6 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #f0f8ff;
   caret-color: transparent;
-  overflow: hidden;
 }
 
 h1 {
@@ -62,12 +61,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
+:root {
+  color: #213547;
+  background-color: #ffffff;
+}
+a:hover {
+  color: #747bff;
 }

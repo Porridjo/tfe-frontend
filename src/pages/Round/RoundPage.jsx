@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../../stylesheets/RoundPage.css'
+import '../../stylesheets/Buttons.css'
 import roundService from '../../services/rounds'
 
 const RoundPage = () => {
@@ -52,7 +53,7 @@ const RoundPage = () => {
                                         <Link to={`/round/${object.tournee.nom}`} className={'link-style'}>
                                             <p>{object.tournee.nom}</p>
                                         </Link>
-                                        <button className="button-delete-round" onClick={() => handleDeleteButton(object.tournee.nom)}>Supprimer</button>
+                                        <button className="button-delete" onClick={() => handleDeleteButton(object.tournee.nom)}>Supprimer</button>
                                     </div>
                                 )
                             })}

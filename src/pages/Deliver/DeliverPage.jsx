@@ -47,7 +47,7 @@ const DeliverPage = () => {
     const handleChangeStatut = (nurseryName, nurseryStatut) => {
         
         const newStatut = {
-            'statut': nurseryStatut === 'livré' ? 'pas livré' : 'livré'
+            'statut': nurseryStatut === 'Livré' ? 'Pas livré' : 'Livré'
         }
         
         nurseryService
@@ -86,7 +86,7 @@ const DeliverPage = () => {
                                 return (
                                     <div className='scroller-item-deliver' key={index}>
                                         {componentToRender}
-                                        <button onClick={() => {handleChangeStatut(nursery.creche.nom, nursery.creche.statut)}} className={nursery.creche.statut === 'livré' ? 'statut-button-delivered' : 'statut-button-not-delivered'}> 
+                                        <button onClick={() => {handleChangeStatut(nursery.creche.nom, nursery.creche.statut)}} className={nursery.creche.statut === 'Livré' ? 'statut-button-delivered' : 'statut-button-not-delivered'}> 
                                             {nursery.creche.statut === undefined ? 'Pas de statut' : nursery.creche.statut} 
                                         </button>
                                     </div>

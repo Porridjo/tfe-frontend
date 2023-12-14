@@ -21,8 +21,6 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
       .then(articles => setArticles(articles))
   }, [])
 
-  console.log(orderedArticles)
-
   const handleOnChange = (e) => {
     const { name, value } = e.target
     setFormData2(prevFormData => {

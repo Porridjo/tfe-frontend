@@ -17,7 +17,6 @@ const getAllArticles = () => {
   const request = axios.get(baseUrl, headers)
   return request
       .then(response => {
-          console.log('promise fulfilled')
           return response.data
       })
       .catch(error => {
@@ -39,7 +38,6 @@ const addOneArticle = (article) => {
   const request = axios.post(baseUrl, article, postHeader)
   return request
       .then(response => {
-          console.log('promise fulfilled')
           return response.data[0]
       })
       .catch(error => {
@@ -59,7 +57,6 @@ const deleteOneArticle = (articleName) => {
   const request = axios.delete(baseUrl.concat(`${articleName}`), headers)
   return request
       .then(response => {
-          console.log('promise fulfilled')
       })
       .catch(error => {
           console.log('fail :', error)

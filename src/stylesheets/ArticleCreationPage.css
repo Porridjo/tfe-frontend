@@ -14,7 +14,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   display: flex;
   flex-direction: column;
-  background-color: #f1f1f1;
+  background-color: white;
 }
 
 .article-creation-div h2 {
@@ -44,6 +44,11 @@
   align-items: center;
   margin-top: 20px;
   padding: 10px;
+}
+
+.article-li {
+  display: flex;
+  background-color: #f0f8ff;
 }
 
 .article-creation-section form > * {

@@ -4,7 +4,6 @@
 }
 
 .button-round {
-    background-color: rgb(93, 93, 217);
     margin-inline: 30px;
     margin-top: 10px;
 }
@@ -24,26 +23,18 @@
     padding: 1%;
     margin-bottom: 5%;
     border-radius: 5px;
-    background-color: rgb(242, 243, 233);
+    background-color: #f0f8ff;
+    border: 1px solid black;
 }
 
 .round-scroller {
     height: 80%;
     overflow-y: scroll;
     scrollbar-width: thin;
-    background-color: rgb(75, 152, 75);
     padding: 3%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .link-style {
     color: black;
     width: 50%;
-}
-
-.button-delete-round {
-    font-size: 15px;
-    background-color: rgb(172, 215, 112);
-    margin: 1%;
 }

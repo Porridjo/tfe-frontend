@@ -2,3 +2,30 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    height: 60vh;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.modify-scroller {
+    height: 50%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.add-article-section {
+    justify-content: center;
+    width: 50%;
+    flex-wrap: wrap;
+}

@@ -10,32 +10,31 @@ const UserCreationPage = () => {
     username: "",
     password: "",
     confirmPassword: "",
-    isAdmin: false,
   });
   const navigate = useNavigate();
 
   const token = JSON.parse(localStorage.getItem("user"))?.access_token;
 
   const handleOnChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: value,
       };
     });
   };
 
-  const createUser = () => {
-    if (formData.password !== confirmPassword) {
-      alert("mot de passe ne correspond pas à la confirmation");
+  const createUser = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Le mot de passe ne correspond pas à la confirmation.");
       return;
     }
 
     const newUser = {
       username: formData.username,
       password: formData.password,
-      isAdmin: formData.isAdmin,
     };
 
     const headers = {
@@ -61,6 +60,7 @@ const UserCreationPage = () => {
             value={formData.username}
             onChange={handleOnChange}
             label="Login"
+            type="text"
           />
           <Input
             id="password"
@@ -68,6 +68,7 @@ const UserCreationPage = () => {
             value={formData.password}
             onChange={handleOnChange}
             label="Mot de passe"
+            type="password"
           />
           <Input
             id="confirmPassword"
@@ -75,14 +76,7 @@ const UserCreationPage = () => {
             value={formData.confirmPassword}
             onChange={handleOnChange}
             label="Confirmer le mot de passe"
-          />
-          <label htmlFor="isAdmin">Admin ?</label>
-          <input
-            type="checkbox"
-            id="isAdmin"
-            checked={formData.isAdmin}
-            onChange={handleOnChange}
-            name="isAdmin"
+            type="password"
           />
           <br />
           <input type="submit" value="Créer l'utilisateur" />

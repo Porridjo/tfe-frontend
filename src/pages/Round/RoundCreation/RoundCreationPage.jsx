@@ -1,11 +1,9 @@
 import { useState } from "react"
-import axios from "axios"
-import { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import roundService from '/src/services/rounds.js'
 import '/src/stylesheets/RoundCreationPage.css'
 
-const AddRoundPage = ({ nurseries, setFormData }) => {
+const RoundCreationPage = ({ nurseries, setFormData }) => {
   const [roundName, setRoundName] = useState("")
   const navigate = useNavigate()
 
@@ -14,6 +12,11 @@ const AddRoundPage = ({ nurseries, setFormData }) => {
   }
 
   const addRound = () => {
+    if (roundName == "") {
+      alert("Veuillez entrer un nom pour la nouvelle tournée.");
+      return;
+    }
+    
     const round = {
       nom: roundName,
       crèches: nurseries,
@@ -55,4 +58,4 @@ const AddRoundPage = ({ nurseries, setFormData }) => {
   )
 }
 
-export default AddRoundPage
+export default RoundCreationPage

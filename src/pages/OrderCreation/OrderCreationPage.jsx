@@ -5,8 +5,6 @@ import '/src/stylesheets/OrderCreationPage.css'
 
 const OrderCreationPage = ({ formData, setFormData }) => {
 
-  console.log(formData)
-
   const handleOnChange = (e) => {
     const { name, value } = e.target
     setFormData(prevFormData => ({
