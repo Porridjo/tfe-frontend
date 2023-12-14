@@ -50,6 +50,13 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
       return;
     }
 
+    const articleExists = articles.some(article => article.name === formData2.name);
+
+    if (articleExists) {
+      alert('Cet article est déjà dans la liste');
+      return;
+    }
+
     const newArticle = {
       name: formData2.name,
       quantity: formData2.quantity,
