@@ -75,13 +75,7 @@ const createOneRound = (newRound) => {
             'Content-Type': 'application/json',
         }
     }
-  const postHeader = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-      
-    }
-  }
+
   const request = axios.post(baseUrl, newRound, headers)
     return request
         .then(response => {
@@ -93,4 +87,25 @@ const createOneRound = (newRound) => {
 
 }
 
-export default { getAllRounds, getOneRound, deleteOneRound, createOneRound }
+const editRoundPreset = (roundName, nurseries) => {
+  if (!token){
+      token = JSON.parse(localStorage.getItem('user')).access_token
+  }
+  headers =  {
+      headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+      }
+  }
+const request = axios.post(baseUrl.concat(`${roundName}/editpreset`), nurseries, headers)
+  return request
+      .then(response => {
+          console.log('promise fulfilled')
+          return response.data
+      })
+      .catch(error => {
+          console.log('fail :', error)
+      })
+}
+
+export default { getAllRounds, getOneRound, deleteOneRound, createOneRound, editRoundPreset }
