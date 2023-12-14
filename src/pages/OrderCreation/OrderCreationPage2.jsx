@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
-import "/src/stylesheets/AddOrderPage.css"
+import "/src/stylesheets/OrderCreationPage2.css"
 import articleService from '/src/services/articles.js'
 
 const OrderCreationPage2 = ({ formData, setNurseries }) => {
@@ -10,7 +10,7 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
   const [articles, setArticles] = useState([])
   const [formData2, setFormData2] = useState({
     name: "",
-    quantity: "",
+    quantity: 1,
   })
 
   const navigate = useNavigate();
@@ -45,6 +45,11 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
   }
 
   const addArticle = () => {
+    if (formData2.name === "") {
+      alert('Sélectionner un article')
+      return;
+    }
+
     const newArticle = {
       name: formData2.name,
       quantity: formData2.quantity,
@@ -71,32 +76,78 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
   }
 
   return (
-    <>
-      <Link to="/round/create-round/addorder">
-        <button>Retour</button>
-      </Link>
-      <button onClick={saveOrder}>Enregistrer</button>
-      <div className="order-list">
-        <ul>
-        {orderedArticles.map((orderedArticle, index) => {
-          return (
-            <li key={index} className="article-li">
-              <div>{orderedArticle.name}</div>
-              <input type="number" value={orderedArticle.quantity} onChange={(e) => handleOnChangeOrderedArticles(e, index)}/>
-              <button onClick={() => deleteArticle(index)}>Supprimer</button>
-            </li>
-          )})}
-        </ul>
+    <div className="order-creation2-container">
+      <div className="button-div">
+        <Link to="/round/create-round/addorder">
+          <button>Retour</button>
+        </Link>
+      </div>
+      <div className="order-form2">
+        <h2>Ajouter des articles</h2>
+        <div className="order-actions"> 
+          <div className="add-article-section">
+            <select name="name" value={formData2.name} onChange={handleOnChange}>
+              <option>Sélectionner un article</option>
+              {articles.map((article, index) => <option key={index}>{article.article.nom}</option>)}
+            </select>
+            <p>Quantité:</p>
+            <input name="quantity" type="number" value={formData2.quantity} onChange={handleOnChange} min="0" />
+            <button onClick={addArticle}>Ajouter l'article</button>
+          </div>
+          <button className="save-order-btn" onClick={saveOrder}>Enregistrer</button>
+        </div>
+        
+        <div className="order-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Quantité</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {orderedArticles.map((orderedArticle, index) => {
+            return (
+              <tr key={index} className="article-li">
+                <td>
+                  <div>{orderedArticle.name}</div>
+                </td>
+                <td>
+                  <input type="number" value={orderedArticle.quantity} onChange={(e) => handleOnChangeOrderedArticles(e, index)}/>
+                </td>
+                <td>
+                  <button onClick={() => deleteArticle(index)}>Supprimer</button>
+                </td> 
+              </tr>
+            )})}
+            </tbody>
+            
+          </table>
+
+          {/* <div className="order-legend">
+            <p>Article</p>
+            <p>Quantité</p>
+            <div></div>
+          </div>
+          <ul>
+          {orderedArticles.map((orderedArticle, index) => {
+            return (
+              <li key={index} className="article-li">
+                <div>{orderedArticle.name}</div>
+                <input type="number" value={orderedArticle.quantity} onChange={(e) => handleOnChangeOrderedArticles(e, index)}/>
+                <button onClick={() => deleteArticle(index)}>Supprimer</button>
+              </li>
+            )})}
+          </ul> */}
+        </div>
+      
       </div>
       
       
-      <select name="name" value={formData2.name} onChange={handleOnChange}>
-        <option>Sélectionner un article</option>
-        {articles.map((article, index) => <option key={index}>{article.article.nom}</option>)}
-      </select>
-      <input name="quantity" type="number" value={formData2.quantity} onChange={handleOnChange} min="0" />
-      <button onClick={addArticle}>Ajouter un article</button>
-    </>
+      
+      
+    </div>
     
   )
 }

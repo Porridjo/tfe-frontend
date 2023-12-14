@@ -1,0 +1,154 @@
+.order-creation2-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.button-div {
+  width: 70%;
+  margin: 10px 50px;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.order-form2 {
+  width: 70%;
+  height: 90%;
+  align-self: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
+
+/* .order-legend {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 0 0;
+  padding: 20px;
+}
+
+.order-legend p:nth-child(1) {
+  flex: 0 0 33%;
+}
+
+.order-legend p:nth-child(2) {
+  flex: 0 0 33%;
+}
+
+.order-legend div {
+  flex: 0 0 20%;
+} */
+
+.order-form2 h2 {
+  text-align: center;
+}
+
+.order-form2 table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-list {
+  margin: 20px 50px;
+}
+
+.order-list::-webkit-scrollbar {
+  display: none;
+}
+
+.order-list table thead tr {
+  background-color: #2e806f;
+  color: #ffffff;
+}
+
+.order-list table td, .order-list table th {
+  padding: 10px;
+  text-align: center;
+}
+
+.order-list table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.order-list table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.order-list table tbody tr:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+
+.order-form2 table input {
+  margin: 0;
+  width: 50px;
+  height: 20px;
+}
+
+.order-list {
+  overflow-y: scroll;
+}
+
+
+/* .order-form2 ul {
+  padding: 0;
+  margin: 0 50px 10px 50px;
+  border-top: 1px black solid;
+}
+
+.order-form2 ul li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px black solid;
+}
+
+.order-form2 ul li input {
+  margin: 0;
+  width: 50px;
+  height: 20px;
+} */
+
+.order-actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px;
+}
+
+.add-article-section {
+  
+  display: flex;
+  align-items: center;
+}
+
+.add-article-section select {
+  height: 33px;
+  width: 200px;
+  border-radius: 6px;
+}
+
+.add-article-section p {
+  margin-left: 20px;
+}
+
+.add-article-section input {
+  width: 50px;
+  height: 23px;
+  margin-left: 10px;
+}
+
+.add-article-section button {
+  margin-left: 20px;
+  border: 1px black solid;
+}
+
+.save-order-btn {
+  background-color: #FFD700;
+}
