@@ -4,12 +4,24 @@ import "../../stylesheets/DeliverPage.css";
 import "../../stylesheets/ModifyCommand.css";
 import "../../stylesheets/position.css";
 import nurseryService from "../../services/nurseries";
+import articleService from "../../services/articles";
 
 const ModifyCommand = () => {
   const [nursery, setNursery] = useState([]);
   const { roundname, nurseryname } = useParams();
   const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
+  const [allArticles, setAllArticles] = useState([]);
+  const [formData2, setFormData2] = useState({
+    name: "",
+    quantity: 1,
+  })
+
+  useEffect(() => {
+    articleService
+      .getAllArticles()
+      .then(articles => setAllArticles(articles))
+  }, [])
 
   useEffect(() => {
     nurseryService.getOneNursery(nurseryname).then((foundNursery) => {
@@ -30,9 +42,34 @@ const ModifyCommand = () => {
     });
   }, [nurseryname]);
 
+  const handleFormChange = (e) => {
+    const { name, value } = e.target
+    setFormData2(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    })
+  }
+
+  const addArticle = () => {
+    if (formData2.name === "") {
+      alert('Sélectionner un article')
+      return;
+    }
+
+    const newArticle = {
+      name: formData2.name,
+      quantity: formData2.quantity,
+    }
+    setArticles(prevState => {
+      return [...prevState, newArticle ]
+    })
+  }
+
   const handleQuantityChange = (index, value) => {
     const newArticles = [...articles];
-    newArticles[index].quantity = value;
+    newArticles[index].quantity = parseInt(value);
     const filtredArticles = newArticles.filter(article => article.quantity !== 0);
     setArticles(filtredArticles);
   };
@@ -68,6 +105,15 @@ const ModifyCommand = () => {
                 </form>
               </div>
             ))}
+          </div>
+          <div className="add-article-section">
+            <select name="name" value={formData2.name} onChange={handleFormChange}>
+              <option>Sélectionner un article</option>
+              {allArticles.map((article, index) => <option key={index}>{article.article.nom}</option>)}
+            </select>
+            <p>Quantité:</p>
+            <input name="quantity" type="number" value={formData2.quantity} onChange={handleFormChange} min="0" />
+            <button onClick={addArticle}>Ajouter l'article</button>
           </div>
         </>
       ) : (
