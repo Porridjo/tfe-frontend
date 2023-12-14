@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../../stylesheets/DeliverPage.css";
-import "../../stylesheets/ModifyCommand.css";
 import "../../stylesheets/position.css";
 import nurseryService from "../../services/nurseries";
 import articleService from "../../services/articles";

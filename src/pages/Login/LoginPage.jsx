@@ -30,18 +30,30 @@ const LoginPage = ({ setUser }) => {
         localStorage.setItem("user", JSON.stringify(response.data));
         setUser(credentials.username);
         navigate("/round");
-      } else {
-        // Gérer les erreurs d'authentification
-        setMessageLogin(
-          "Veuillez entrer un identifiant et un mot de passe valide."
-        );
-        setIsLogged(false);
       }
     } catch (error) {
-      // Gérer les erreurs liées à l'appel API
-      console.error("API call failed:", error);
-      setMessageLogin("Une erreur est survenue..");
-      setIsLogged(false);
+      if (error.response) {
+        // La requête a été faite et le serveur a répondu avec un code d'état différent de 2xx
+        if (error.response.status === 401) {
+          setMessageLogin('Identifiant ou mot de passe incorrect.');
+          setIsLogged(false);
+        } else {
+          // Autres erreurs du serveur
+          console.error('Erreur du serveur:', error.response.data);
+          setMessageLogin('Une erreur est survenue du côté du serveur.');
+          setIsLogged(false);
+        }
+      } else if (error.request) {
+        // La requête a été faite, mais aucune réponse n'a été reçue
+        console.error('Pas de réponse reçue du serveur:', error.request);
+        setMessageLogin('Pas de réponse reçue du serveur.');
+        setIsLogged(false);
+      } else {
+        // Autres erreurs
+        console.error('Erreur inattendue:', error.message);
+        setMessageLogin('Une erreur inattendue est survenue.');
+        setIsLogged(false);
+      }
     }
   };
 
