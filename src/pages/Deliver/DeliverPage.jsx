@@ -29,7 +29,7 @@ const DeliverPage = () => {
 
             let foundArticle = allArticles.find(existingArticle => existingArticle.name === object.article.nom)
             if (!foundArticle){
-                allArticles.push({name: object.article.nom, quantity: object.quantite, id: index})
+                allArticles.push({name: object.article.nom, quantity: object.quantite, unit: object?.unite, id: index})
                 index++
             } else {
                 let articleWithUpdatedQuantity = {
@@ -105,7 +105,7 @@ const DeliverPage = () => {
                         <>
                             {allArticles.map(article => {
                                 return (
-                                    <p className='article' key={article.id}>{article.name}: {article.quantity}</p>
+                                    <p className='article' key={article.id}>{article.name}: {article.quantity} {article.unit !== undefined && article.unit}</p>
                                 )
                             })}
                         </>

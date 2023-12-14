@@ -18,10 +18,12 @@ const DeliverDetails = () => {
     }, [])
 
     const articles = []
-    
+    let index = 1
+
     nursery.forEach(object => {
         object.articleList.forEach(articleItem => {
-            articles.push({name: articleItem.article.nom, quantity: articleItem.quantite})
+            articles.push({name: articleItem.article.nom, quantity: articleItem.quantite, unit: articleItem?.unite, id: index})
+            index++
         })
     })
 
@@ -33,9 +35,9 @@ const DeliverDetails = () => {
                         <button className="button-deliver" onClick={() => navigate(`/round/${roundname}`)}> Retour </button>
                         <h3>{nursery[0].creche.nom}</h3>
                         <div className="articles-scroller">
-                            {articles.map((article, i) => (
-                                <div key={i}>
-                                    <p className="article">{article.name} : {article.quantity} </p>
+                            {articles.map((article) => (
+                                <div key={article.id}>
+                                    <p className="article">{article.name} : {article.quantity} {article.unit !== undefined && article.unit} </p>
                                 </div>
                             ))}
                         </div>
