@@ -18,7 +18,7 @@ const DeliverPage = () => {
             .then(round => {
                 setNurseries(round)
             })
-    }, [])    
+    }, [])
     
     const allArticles = []
     let index = 1
@@ -70,9 +70,8 @@ const DeliverPage = () => {
                             {nurseries.map((nursery, index) => {
                                 if (user){
                                     if (user.isAdmin){
-                                        // REMPLACER "/" PAR ROUTE MODIFICATION COMMANDE POUR ADMIN
                                         componentToRender = (
-                                            <Link className='link-style' to={`/`}>                            
+                                            <Link className='link-style' to={`/modify/${roundName}/${nursery.creche.nom}`}>                            
                                                 <p>{nursery.creche.nom}</p>
                                             </Link>
                                         )
