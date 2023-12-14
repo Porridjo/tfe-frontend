@@ -1,0 +1,35 @@
+.preset-page-container {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.preset-modification-div {
+  display: flex;
+  justify-content: space-around;
+  height: 90%;
+  flex-wrap: wrap;
+}
+
+.nursery-list, .preset-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 600px;
+  height: 700px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #f1f1f1;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.nursery-list tbody tr, .preset-div tbody tr {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  border: 1px black solid;
+  padding: 10px;
+  border-radius: 6px;
+}

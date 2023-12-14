@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import "/src/stylesheets/OrderCreationPage2.css"
 import articleService from '/src/services/articles.js'
+import nurseryService from "../../services/nurseries";
 
 const OrderCreationPage2 = ({ formData, setNurseries }) => {
   const [orderedArticles, setOrderedArticles] = useState([])
@@ -13,6 +14,7 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
     quantity: 1,
   })
 
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,8 +22,6 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
       .getAllArticles()
       .then(articles => setArticles(articles))
   }, [])
-
-  console.log(orderedArticles)
 
   const handleOnChange = (e) => {
     const { name, value } = e.target
@@ -34,13 +34,9 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
   }
 
   const handleOnChangeOrderedArticles = (e, index) => {
-
     const newArray = [...orderedArticles]
-
     const { value } = e.target
-
     newArray[index] = {...newArray[index], quantity: value}
-
     setOrderedArticles(newArray)
   }
 
