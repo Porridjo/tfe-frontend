@@ -79,4 +79,22 @@
   .round-form {
     width: 95%;
   }
+
+  .round-input-div {
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .round-input-div > p {
+    margin: 0 0 10px 10px;
+  }
+
+  .round-input-div > input {
+    margin: 0 10px;
+    width: 100%;
+  }
+
+  .add-order-btn {
+    margin: 10px 0 0 10px;
+  }
 }

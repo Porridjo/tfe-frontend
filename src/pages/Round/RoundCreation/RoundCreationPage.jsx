@@ -45,7 +45,7 @@ const RoundCreationPage = ({ nurseries, setFormData }) => {
         <h2>Créer une tournée</h2>
         <div className="round-input-div">
           <p>Entrer le nom de tournée: </p>
-          <input type="text" value={roundName} onChange={handleChange}/>
+          <input className="roundname-input" type="text" value={roundName} onChange={handleChange}/>
         </div>
         <Link to={"/round/create-round/addorder"}>
           <button className="add-order-btn">Ajouter une commande</button>
