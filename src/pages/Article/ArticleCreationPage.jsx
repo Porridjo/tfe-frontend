@@ -122,7 +122,7 @@ const ArticleCreationPage = () => {
               <option>unité</option>
               <option>caisse</option>
             </select>
-            <input type="submit" value="Ajouter l'article" />
+            <input className="submit-new-article-btn" type="submit" value="Ajouter l'article" />
           </form>
         </div>
       </div>

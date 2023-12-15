@@ -51,36 +51,43 @@ const UserCreationPage = () => {
 
   return (
     <>
-      <div className='user-creation-container center-container'>
-        <button onClick={() => navigate(`/round`)}>Retour</button>
-        <form className="center-container" onSubmit={createUser}>
-          <Input
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleOnChange}
-            label="Login"
-            type="text"
-          />
-          <Input
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleOnChange}
-            label="Mot de passe"
-            type="password"
-          />
-          <Input
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleOnChange}
-            label="Confirmer le mot de passe"
-            type="password"
-          />
-          <br />
-          <input type="submit" value="Créer l'utilisateur" />
-        </form>
+      <div className='user-creation-container'>
+        <div className="button-div-create-user">
+          <button onClick={() => navigate(`/round`)}>Retour</button>
+        </div>
+        <div className="user-creation-form-div">
+          <h2>Créer un utilisateur</h2>
+          <form  onSubmit={createUser}>
+            <Input
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleOnChange}
+              label="Login"
+              type="text"
+            />
+            <Input
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleOnChange}
+              label="Mot de passe"
+              type="password"
+            />
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleOnChange}
+              label="Confirmer le mot de passe"
+              type="password"
+            />
+            <div>
+              <input type="submit" value="Créer l'utilisateur" />
+            </div>
+          </form>
+        </div>
+        
       </div>
     </>
   );

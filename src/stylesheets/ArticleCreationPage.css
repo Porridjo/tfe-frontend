@@ -86,4 +86,20 @@
     width: 95%;
     margin-top: 10px;
   }
+
+  .article-creation-section {
+    flex-wrap: wrap;
+  }
+
+  .article-creation-section form input:first-child{
+    height: 20px;
+  }
+
+  .article-creation-section select {
+    height: 30px;
+  }
+
+  .submit-new-article-btn {
+    margin-top: 20px;
+  }
 }

@@ -1,8 +1,59 @@
 .user-creation-container {
-    width: 90%;
-    height: 50vh;
-    padding: 2%;
-    border: groove 2px;
-    border-radius: 5px;
-    background-color: white;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.button-div-create-user {
+  display: flex;
+  justify-content: center;
+}
+
+.user-creation-form-div {
+  width: 30%;
+  height: 70%;
+  align-self: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.user-creation-form-div input {
+  height: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px black solid;
+}
+
+.user-creation-form-div div:nth-child(4) {
+  margin-top: 30px;
+}
+
+.user-creation-form-div form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-creation-form-div > * {
+  margin: 30px;
+}
+
+@media (max-width: 700px) {
+  .button-div-article {
+    width: 100%;
+    align-self: start;
+    align-items: center;
+    display: flex;
+    margin-left: 2%;
+    margin-right: 10%;
+    justify-content: space-between;
+  }
+
+  .user-creation-form-div {
+    width: 95%;
+    margin-top: 10px;
+  }
 }
