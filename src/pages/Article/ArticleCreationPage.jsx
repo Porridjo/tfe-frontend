@@ -63,7 +63,7 @@ const ArticleCreationPage = () => {
 
   return (
     <div className="article-creation-container">
-      <div className="button-div">
+      <div className="button-div-article">
         <Link to="/round">
           <button>Retour</button>
         </Link>

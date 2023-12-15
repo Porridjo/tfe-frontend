@@ -35,7 +35,7 @@ const RoundCreationPage = ({ nurseries, setFormData }) => {
 
   return (
     <div className="round-creation-container">
-      <div className="button-div">
+      <div className="button-div-round">
         <Link to="/round">
           <button>Retour</button>
         </Link>

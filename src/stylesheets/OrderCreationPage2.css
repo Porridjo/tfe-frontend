@@ -5,7 +5,7 @@
   justify-self: center;
 }
 
-.button-div {
+.button-div-order2 {
   width: 70%;
   margin: 10px 50px;
   align-self: center;
@@ -25,25 +25,6 @@
   flex-direction: column;
   background-color: white;
 }
-
-/* .order-legend {
-  display: flex;
-  justify-content: space-around;
-  margin: 10px 0 0 0;
-  padding: 20px;
-}
-
-.order-legend p:nth-child(1) {
-  flex: 0 0 33%;
-}
-
-.order-legend p:nth-child(2) {
-  flex: 0 0 33%;
-}
-
-.order-legend div {
-  flex: 0 0 20%;
-} */
 
 .order-form2 h2 {
   text-align: center;
@@ -95,31 +76,11 @@
   overflow-y: scroll;
 }
 
-
-/* .order-form2 ul {
-  padding: 0;
-  margin: 0 50px 10px 50px;
-  border-top: 1px black solid;
-}
-
-.order-form2 ul li {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px black solid;
-}
-
-.order-form2 ul li input {
-  margin: 0;
-  width: 50px;
-  height: 20px;
-} */
-
 .order-actions {
   display: flex;
   justify-content: space-between;
   margin: 0 50px;
+  flex-wrap: wrap;
 }
 
 .add-article-section {
@@ -151,4 +112,42 @@
 
 .save-order-btn {
   background-color: #FFD700;
+}
+
+@media (max-width: 600px) {
+  .button-div-order2 {
+    width: 100%;
+    align-self: start;
+    display: flex;
+    justify-content: start;
+    margin-left: 2%;
+  }
+
+  .order-form2 {
+    width: 95%;
+  }
+
+  .save-order-btn {
+    height: 50px;
+    align-self: center;
+  }
+
+  .order-list {
+    margin: 10px;
+  }
+
+  .add-article-section p {
+    margin-left: 0;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+  }
+  
+  .add-article-section input {
+    margin-left: 0 ;
+  }
+  
+  .add-article-section button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }

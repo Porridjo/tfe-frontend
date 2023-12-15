@@ -80,7 +80,7 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
 
   return (
     <div className="order-creation2-container">
-      <div className="button-div">
+      <div className="button-div-order2">
         <Link to="/round/create-round/addorder">
           <button>Retour</button>
         </Link>
@@ -112,7 +112,7 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
             <tbody>
             {orderedArticles.map((orderedArticle, index) => {
             return (
-              <tr key={index} className="article-li">
+              <tr key={index}>
                 <td>
                   <div>{orderedArticle.name}</div>
                 </td>
