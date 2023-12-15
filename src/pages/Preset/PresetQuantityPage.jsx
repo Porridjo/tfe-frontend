@@ -14,8 +14,6 @@ const PresetQuantityPage = () => {
     quantity: 1,
   })
 
-  console.log(nursery)
-
   useEffect(() => {
     articleService
       .getAllArticles()
@@ -40,8 +38,6 @@ const PresetQuantityPage = () => {
         setOrderedArticles(articlesTemp);
     })
   }, [])
-
-  console.log("ordered items", orderedArticles)
 
   const handleOnChange = (e) => {
     const { name, value } = e.target

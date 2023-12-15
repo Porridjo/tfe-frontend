@@ -36,7 +36,6 @@ const getAllNurseries = () => {
   const request = axios.get(baseUrl, headers)
   return request
       .then(response => {
-          console.log('promise for nursery fulfilled')
           return response.data
       })
       .catch(error => {

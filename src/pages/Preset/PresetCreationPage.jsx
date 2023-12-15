@@ -39,11 +39,8 @@ const PresetCreationPage = () => {
       presetToSave.crèches.push(nurseryFormated)
     })
 
-    console.log(presetToSave)
-
     roundsService
       .editRoundPreset(roundName, presetToSave)
-      .then(response => console.log(response))
   } 
 
   return (
