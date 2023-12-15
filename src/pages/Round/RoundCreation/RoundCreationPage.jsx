@@ -3,10 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import roundService from '/src/services/rounds.js'
 import '/src/stylesheets/RoundCreationPage.css'
 
-const RoundCreationPage = ({ nurseries, setFormData }) => {
-  const [roundName, setRoundName] = useState("")
+const RoundCreationPage = ({ roundName, setRoundName, nurseries, setNurseries, setFormData }) => {
   const navigate = useNavigate()
-
   const handleChange = (e) => {
     setRoundName(e.target.value)
   }
@@ -30,6 +28,14 @@ const RoundCreationPage = ({ nurseries, setFormData }) => {
       nurseryAdress: "",
       telephoneNumber: "",
     })
+
+    setRoundName(""),
+    setFormData({
+      nurseryName: "",
+      nurseryAdress: "",
+      telephoneNumber: "",
+    })
+    setNurseries([])
     navigate('/round')
   }
 

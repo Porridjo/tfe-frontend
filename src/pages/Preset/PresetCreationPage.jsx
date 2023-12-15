@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import nurseryService from '/src/services/nurseries.js'
 import '/src/stylesheets/PresetPage.css'
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import roundsService from '/src/services/rounds.js'
 
 const PresetCreationPage = () => {
   const [preset, setPreset] = useState([])
   const [nurseries, setNurseries] = useState([])
+  const navigate = useNavigate();
 
   const roundName = useParams().roundname
 
@@ -14,6 +15,10 @@ const PresetCreationPage = () => {
     nurseryService
       .getAllNurseries()
       .then(response => setNurseries(response))
+    
+    roundsService
+      .getRoundPreset(roundName)
+      .then(response => setPreset(response))
   }, [])
 
   const addToPreset = (nurseryToAdd) => {
@@ -41,7 +46,13 @@ const PresetCreationPage = () => {
 
     roundsService
       .editRoundPreset(roundName, presetToSave)
+
+    navigate(`/round/${roundName}`)
   } 
+
+  const presetNameArray = preset.map(nursery => nursery.creche.nom)
+
+  const filteredNurseries = nurseries.filter(nursery => !presetNameArray.includes(nursery.creche.nom))
 
   return (
     <div className="preset-page-container">
@@ -60,7 +71,7 @@ const PresetCreationPage = () => {
               </tr>
             </thead>
             <tbody>
-            {nurseries.map((nursery, index) => {
+            {filteredNurseries.map((nursery, index) => {
             return (
               
               <tr key={index}>

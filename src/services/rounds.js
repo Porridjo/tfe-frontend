@@ -102,4 +102,68 @@ const request = axios.post(baseUrl.concat(`${roundName}/editpreset`), nurseries,
       })
 }
 
-export default { getAllRounds, getOneRound, deleteOneRound, createOneRound, editRoundPreset }
+const getRoundPreset = (roundName) => {
+  if (!token){
+      token = JSON.parse(localStorage.getItem('user')).access_token
+  }
+  headers =  {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
+  const request = axios.get(baseUrl.concat(`${roundName}/preset`), headers)
+  return request
+      .then(response => {
+          console.log(response.data)
+          return response.data
+      })
+      .catch(error => {
+          console.log('fail :', error)
+      })
+}
+
+const getOneRoundDefault = (roundName) => {
+  if (!token){
+      token = JSON.parse(localStorage.getItem('user')).access_token
+  }
+  headers =  {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
+  const request = axios.get(baseUrl.concat(`${roundName}/default`), headers)
+  return request
+      .then(response => {
+          return response.data
+      })
+      .catch(error => {
+          console.log('fail :', error)
+      })
+}
+
+const replaceWithPreset = (roundName, nurseries) => {
+  if (!token){
+      token = JSON.parse(localStorage.getItem('user')).access_token
+  }
+  headers =  {
+      headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+      }
+  }
+  const object = {
+    crèches: nurseries
+  }
+
+const request = axios.post(baseUrl.concat(`${roundName}/replace`), object, headers)
+  return request
+      .then(response => {
+          return response.data
+      })
+      .catch(error => {
+          console.log('fail :', error)
+      })
+}
+
+
+export default { getAllRounds, getOneRound, deleteOneRound, createOneRound, editRoundPreset, getRoundPreset, getOneRoundDefault, replaceWithPreset }

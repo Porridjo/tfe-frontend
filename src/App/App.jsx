@@ -33,6 +33,8 @@ const App = () => {
     navigate("/")
   }
 
+  const [roundName, setRoundName] = useState("")
+
   return (
     <>
     {user && <button onClick={signOut}>Déconnexion</button>}
@@ -45,7 +47,7 @@ const App = () => {
       <Route path='/round/:roundname/preset' element={user ? <PresetCreationPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname/preset/:nurseryname' element={user ? <PresetQuantityPage /> : <Navigate replace to="/" />} />
 
-      <Route path="/round/create-round" element={user ? <RoundCreationPage nurseries={nurseries} setFormData={setFormData} /> : <Navigate replace to="/" />} />
+      <Route path="/round/create-round" element={user ? <RoundCreationPage roundName={roundName} setRoundName={setRoundName} nurseries={nurseries} setNurseries={setNurseries} setFormData={setFormData} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder" element={user ? <OrderCreationPage formData={formData} setFormData={setFormData} /> : <Navigate replace to="/" />} />
       <Route path="/round/create-round/addorder2" element={user ? <OrderCreationPage2 formData={formData} setNurseries={setNurseries} /> : <Navigate replace to="/" />} />
       <Route path='/create-article' element={user ? <ArticleCreationPage /> : <Navigate replace to="/" />} />

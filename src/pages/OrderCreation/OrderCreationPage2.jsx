@@ -13,8 +13,6 @@ const OrderCreationPage2 = ({ formData, setNurseries }) => {
     name: "",
     quantity: 1,
   })
-
-  
   const navigate = useNavigate();
 
   useEffect(() => {

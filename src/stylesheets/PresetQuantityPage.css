@@ -1,0 +1,57 @@
+.preset-modification-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.preset-quantity-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px;
+}
+
+.add-article-section-preset {
+  display: flex;
+  flex-wrap: wrap ;
+  align-items: center;
+}
+
+.add-article-section-preset select {
+  height: 33px;
+  width: 200px;
+  border-radius: 6px;
+}
+
+.add-article-section-preset p {
+  margin-left: 20px;
+}
+
+.add-article-section-preset input {
+  width: 50px;
+  height: 23px;
+  margin-left: 10px;
+}
+
+.add-article-section-preset button {
+  margin-left: 20px;
+  border: 1px black solid;
+}
+
+.save-default-btn {
+  background-color: #FFD700;
+  color: black;
+  border: 1px solid black;
+}
+
+@media (max-width: 600px) {
+  .save-default-btn {
+    height: 50px;
+    align-self: center;
+  }
+
+  .preset-quantity-input {
+    width: 50px;
+  }
+}
+

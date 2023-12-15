@@ -11,6 +11,10 @@ const DeliverPage = () => {
     const roundName = useParams().roundname
     const user = JSON.parse(localStorage.getItem('user'))?.user || null
     let componentToRender
+
+    const [preset, setPreset] = useState([])
+
+    console.log("pres",preset)
     
     useEffect(() => {
         roundService
@@ -18,6 +22,10 @@ const DeliverPage = () => {
             .then(round => {
                 setNurseries(round)
             })
+
+        roundService
+        .getOneRoundDefault(roundName)
+        .then(response => setPreset(response))
     }, [])
     
     const allArticles = []
@@ -59,10 +67,21 @@ const DeliverPage = () => {
             })
     }
 
+    const resetNurseries = () => {
+      roundService
+        .replaceWithPreset(roundName, preset)
+        .then(response => console.log("good"))
+    }
+
     return (
         <div className="deliver-container" style={{color: 'black'}}>
             <div className="nurseries-element">
+                
                 <button className="button-deliver" onClick={() => navigate('/round')}> Retour </button>
+                <Link to={`/round/${roundName}/preset`}>
+                  <button>Modifier le preset</button>
+                </Link>
+                <button onClick={resetNurseries}>Réinitialiser au preset</button>
                 <h3>Crèches de la tournée</h3>
                 <div className='nurseries-scroller'>
                     {nurseries.length > 0 ? (
