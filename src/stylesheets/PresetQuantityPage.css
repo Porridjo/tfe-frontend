@@ -8,7 +8,7 @@
 .preset-quantity-header {
   display: flex;
   justify-content: space-between;
-  margin: 0 50px;
+  margin: 20px 50px;
 }
 
 .add-article-section-preset {

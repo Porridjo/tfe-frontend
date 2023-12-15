@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import articleService from "../../services/articles";
 import nurseryService from "../../services/nurseries";
 import "/src/stylesheets/PresetQuantityPage.css"
@@ -91,6 +91,9 @@ const PresetQuantityPage = () => {
 
   return (
     <div className="preset-modification-container">
+      <Link to={`/round/${roundname}/preset`}>
+        <button>Retour</button>
+      </Link>
       <div className="preset-quantity-header">
         <div className="add-article-section-preset">
           <select name="name" value={formData.name} onChange={handleOnChange}>

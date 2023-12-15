@@ -4,9 +4,8 @@ import '/src/stylesheets/PresetPage.css'
 import { Link, useNavigate, useParams } from "react-router-dom"
 import roundsService from '/src/services/rounds.js'
 
-const PresetCreationPage = () => {
-  const [preset, setPreset] = useState([])
-  const [nurseries, setNurseries] = useState([])
+const PresetCreationPage = ( {preset, setPreset, nurseries, setNurseries}) => {
+  
   const navigate = useNavigate();
 
   const roundName = useParams().roundname

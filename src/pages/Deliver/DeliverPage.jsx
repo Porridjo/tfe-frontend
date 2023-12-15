@@ -70,7 +70,7 @@ const DeliverPage = () => {
     const resetNurseries = () => {
       roundService
         .replaceWithPreset(roundName, preset)
-        .then(response => console.log("good"))
+        .then(() => setNurseries(preset))
     }
 
     return (

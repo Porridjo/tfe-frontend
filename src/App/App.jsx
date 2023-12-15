@@ -33,6 +33,9 @@ const App = () => {
     navigate("/")
   }
 
+  const [preset, setPreset] = useState([])
+  const [nurseriesList, setNurseriesList] = useState([])
+
   const [roundName, setRoundName] = useState("")
 
   return (
@@ -44,7 +47,7 @@ const App = () => {
       <Route path='/round/:roundname' element={user ? <DeliverPage /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname/:nurseryname' element={user ? <DeliverDetails /> : <Navigate replace to="/" />} />
       <Route path='/modify/:roundname/:nurseryname' element={user ? <ModifyCommand/> : <Navigate replace to="/" />} />
-      <Route path='/round/:roundname/preset' element={user ? <PresetCreationPage /> : <Navigate replace to="/" />} />
+      <Route path='/round/:roundname/preset' element={user ? <PresetCreationPage preset={preset} setPreset={setPreset} nurseries={nurseriesList} setNurseries={setNurseriesList} /> : <Navigate replace to="/" />} />
       <Route path='/round/:roundname/preset/:nurseryname' element={user ? <PresetQuantityPage /> : <Navigate replace to="/" />} />
 
       <Route path="/round/create-round" element={user ? <RoundCreationPage roundName={roundName} setRoundName={setRoundName} nurseries={nurseries} setNurseries={setNurseries} setFormData={setFormData} /> : <Navigate replace to="/" />} />
